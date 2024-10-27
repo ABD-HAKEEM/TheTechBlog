@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thasneem</title>
+    <link rel="icon" href="" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://kit.fontawesome.com/bd921df3a8.js" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        @media (min-width: 540px) and (max-width: 720px) {
+            .mb-custom {
+                margin-bottom: 40px;
+            }
+        }
+
+        @media (min-width: 375px) and (max-width: 667px) {
+            .mb-custom {
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800  hidden-scroll">
+
+   <header>
+    
+   </header>
+
+    <main>
+        <div class="horizontal-scroll-wrapper" id="scroll-container">
+
+            <!-- Section 1: Hero Section -->
+
+                
+            <section id="section1" class="scroll-section bg-black text-white flex relative ">
+                <button id="toggleButton1" class="md:hidden p-2 bg-orange-400 text-white  absolute top-4 right-10" aria-expanded="false" aria-controls="sidebar1">
+                    <i class="fa fa-bars"></i>
+                </button>
+            
+                <!-- Sidebar Section 1 -->
+                <div id="sidebar1" class="relative sticky w-full md:w-80 h-screen bg-black overflow-hidden transform -translate-x-full md:translate-x-0 z-20">
+                    <button id="hideSidebarButton1" class="p-2 text-gray-400 fixed top-4 right-10 md:hidden"><i class="fa fa-arrow-circle-o-left"></i></button>
+                    <img src="/image/logo.jpg" alt="Logo" class="rounded-full w-36 h-36 md:w-56 md:h-56 md:mt-10 mx-auto mt-16">
+            
+                    <nav class="flex flex-col items-center max-w-xs mt-16 md:mt-24 text-center mx-auto">
+                        <ul class="space-y-1">
+                            <li><a href="#!" class="block h-12 text-gray-400 text-lg underline-animation text-orange-400">Thasneem Fareed</a></li>
+                            <li><a href="#section2" class="block h-12 text-gray-400 text-lg underline-animation text-white">About</a></li>
+                            <li><a href="#section3" class="block h-12 text-gray-400 text-lg underline-animation text-white">Contact</a></li>
+                            <li><a href="#section4" class="block h-12 text-gray-400 text-lg underline-animation text-white">FAQ</a></li>
+                        </ul>
+                    </nav>
+            
+                    <div class="mt-56 flex flex-col items-center">
+                        <ul class="flex space-x-2 mt-5 items-center justify-center">
+                            <li><a href="#" class="p-2 text-yellow-500 hover:bg-fuchsia-600 rounded-xl"><span class="fab fa-twitter"></span></a></li>
+                            <li><a href="#" class="p-2 text-yellow-500 hover:bg-fuchsia-600 rounded-xl"><span class="fab fa-facebook"></span></a></li>
+                            <li><a href="#" class="p-2 text-yellow-500 hover:bg-fuchsia-600 rounded-xl"><span class="fab fa-linkedin"></span></a></li>
+                            <li><a href="#" class="p-2 text-yellow-500 hover:bg-fuchsia-600 rounded-xl"><span class="fab fa-instagram"></span></a></li>
+                            <li><a href="https://wa.me/message/DXZDJ66XJWI6B1" class="p-2 text-yellow-500 hover:bg-fuchsia-600 rounded-xl"><span class="fab fa-whatsapp"></span></a></li>
+                        </ul>
+                        <p class="text-sm text-gray-100 text-center mt-3">
+                            © Copyright 2024 Go-Smart solutions. <br> All rights reserved.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="relative h-32 w-32">
+                <div class="absolute top-20 right-40 h-16 w-16">
+
+
+                    <button
+                        class="text-gray-50  duration-300 relative group cursor-pointer   overflow-hidden h-12 w-36 rounded-md  p-2  font-extrabold ">
+
+                        <div
+                            class="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-16 h-16 rounded-full group-hover:scale-150  duration-700 right-12 top-12 bg-yellow-500">
+                        </div>
+                        <div
+                            class="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-12 h-12 rounded-full group-hover:scale-150  duration-700 right-20 -top-6 bg-orange-500">
+                        </div>
+                        <div
+                            class="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-8 h-8   rounded-full group-hover:scale-150  duration-700 right-32 top-6 bg-pink-500">
+                        </div>
+                        <div
+                            class="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-4 h-4   rounded-full group-hover:scale-150  duration-700 right-2 top-12 bg-red-600">
+                        </div>
+                        <p class="z-10 absolute bottom-2 left-2 text-xl font-serif">Hire Me :-)</p>
+                    </button>
+                </div>
+            </section>
+
+            <section class="relative">
+                <div class="absolute bottom-16 right-10 md:right-16 md:bottom-16 ">
+
+                    <div class="max-w-md w-full lg:max-w-full lg:flex">
+                       
+                        <div class=" w-80  border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal md:w-[400px]">
+                          <div class="mb-8">
+                            <p class="text-sm text-gray-600 flex items-center ">
+                              <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
+                              </svg>
+                              Members only
+                            </p>
+                            <div class="text-gray-900 font-bold text-xl mb-2">Thasneem Fareed</div>
+                            <p class="text-gray-700 text-base">UI|UX Designer</p>
+                          </div>
+
+                          <div class=" items-center">
+                            <div class="flex">
+                                <i class="fa fa-phone ml-10 text-orange-500" style="font-size:20px"></i><span
+                                    class="ml-10 text-neutral-900">+94761122226</span>
+                            </div>
+                            <div class="flex">
+                                <i class="fa fa-envelope-o ml-10 text-orange-500" style="font-size:20px"></i><span
+                                    class="ml-10 text-neutral-900">iamthasneem@gmail.com</span>
+  
+                            </div>
+  
+                            <div class="flex">
+                                <i class="fa fa-map-marker ml-10 text-orange-500" style="font-size:20px"></i><span
+                                    class="ml-10 text-neutral-900">Sri Lanka</span>
+  
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                </div>
+
+           
+           
+            </section>
+
+
+        
+
+
+            <!-- Section 2: About Us -->
+            <section id="section2" class="scroll-section bg-black text-white flex relative ">
+
+                <button id="toggleButton2" class="md:hidden p-2 bg-orange-400 text-white  absolute top-4 right-10" aria-expanded="false" aria-controls="sidebar2">
+                    <i class="fa fa-bars"></i>
+                </button>
+            
+                <!-- Sidebar Section 2 -->
+                <div id="sidebar2" class="relative sticky w-full md:w-80 h-screen bg-black overflow-hidden transform -translate-x-full md:translate-x-0 z-20">
+                    <button id="hideSidebarButton2" class="p-2 text-gray-400 fixed top-4 right-10 md:hidden"><i class="fa fa-arrow-circle-o-left"></i></button>
+            
+                    <nav class="flex flex-col items-center max-w-xs mt-16 md:mt-24 text-center mx-auto">
+                        <ul class="space-y-1">
+                            <li><a href="#!" class="block h-12 text-gray-400 text-lg underline-animation text-orange-400">Thasneem Fareed</a></li>
+                            <li><a href="#section1" class="block h-12 text-gray-400 text-lg underline-animation text-white">Home</a></li>
+                            <li><a href="#section3" class="block h-12 text-gray-400 text-lg underline-animation text-white">Contact</a></li>
+                            <li><a href="#section4" class="block h-12 text-gray-400 text-lg underline-animation text-white">FAQ</a></li>
+                        </ul>
+                    </nav>
+            
+                    <div class="mt-56 flex flex-col items-center">
+                        <ul class="flex space-x-2 mt-5 items-center justify-center">
+                            <li><a href="#" class="p-2 text-yellow-500 hover:bg-fuchsia-600 rounded-xl"><span class="fab fa-twitter"></span></a></li>
+                            <li><a href="#" class="p-2 text-yellow-500 hover:bg-fuchsia-600 rounded-xl"><span class="fab fa-facebook"></span></a></li>
+                            <li><a href="#" class="p-2 text-yellow-500 hover:bg-fuchsia-600 rounded-xl"><span class="fab fa-linkedin"></span></a></li>
+                            <li><a href="#" class="p-2 text-yellow-500 hover:bg-fuchsia-600 rounded-xl"><span class="fab fa-instagram"></span></a></li>
+                            <li><a href="https://wa.me/message/DXZDJ66XJWI6B1" class="p-2 text-yellow-500 hover:bg-fuchsia-600 rounded-xl"><span class="fab fa-whatsapp"></span></a></li>
+                        </ul>
+                        <p class="text-sm text-gray-100 text-center mt-3">
+                            © Copyright 2024 Go-Smart solutions. <br> All rights reserved.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Services -->
+            <section id="section3" class="scroll-section bg-red-500 text-white flex items-center justify-center">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold mb-4">Our Services</h2>
+                    <p class="text-lg max-w-md mx-auto">From web design to mobile app development, we offer a range of
+                        digital services to suit your needs.</p>
+                    <a href="#section4"
+                        class="bg-white text-red-500 px-6 py-3 mt-6 rounded-full shadow hover:bg-red-100 transition">Contact
+                        Us</a>
+                </div>
+            </section>
+
+            <!-- Section 4: Contact Us -->
+            <section id="section4" class="scroll-section bg-purple-500 text-white flex items-center justify-center">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+                    <p class="text-lg max-w-md mx-auto">Reach out to us for any inquiries or to start your next project
+                        with us.</p>
+                    <a href="mailto:contact@website.com"
+                        class="bg-white text-purple-500 px-6 py-3 mt-6 rounded-full shadow hover:bg-purple-100 transition">Email
+                        Us</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script>
+        function initializeSidebar(toggleButtonId, sidebarId, hideButtonId) {
+            const toggleButton = document.getElementById(toggleButtonId);
+            const sidebar = document.getElementById(sidebarId);
+            const hideButton = document.getElementById(hideButtonId);
+    
+            function toggleSidebar() {
+                const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                toggleButton.setAttribute('aria-expanded', !isExpanded);
+                sidebar.classList.toggle('-translate-x-full');
+            }
+    
+            toggleButton.addEventListener('click', toggleSidebar);
+            hideButton.addEventListener('click', toggleSidebar);
+    
+            // Close sidebar on link click
+            const links = sidebar.querySelectorAll('nav a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    sidebar.classList.add('-translate-x-full');
+                    toggleButton.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+    
+        // Initialize both sidebars separately with unique IDs for toggle and hide buttons
+        initializeSidebar('toggleButton1', 'sidebar1', 'hideSidebarButton1');
+        initializeSidebar('toggleButton2', 'sidebar2', 'hideSidebarButton2');
+    </script>
+
+    <script>
+        const sections = document.querySelectorAll('.scroll-section');
+        const scrollContainer = document.getElementById('scroll-container');
+        let currentSectionIndex = 0;
+
+        // Function to scroll to the specific section
+        function scrollToSection(index) {
+            if (index >= 0 && index < sections.length) {
+                sections[index].scrollIntoView({ behavior: 'smooth' });
+                currentSectionIndex = index;
+                updateActiveLink();
+            }
+        }
+
+        // Function to highlight the current nav link based on scroll position
+        function updateActiveLink() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active-nav-link'));
+            navLinks[currentSectionIndex].classList.add('active-nav-link');
+        }
+
+        // Listen for wheel events
+        scrollContainer.addEventListener('wheel', (event) => {
+            if (event.deltaY > 0) {
+                // Scrolling down
+                scrollToSection(currentSectionIndex + 1);
+            } else {
+                // Scrolling up
+                scrollToSection(currentSectionIndex - 1);
+            }
+            event.preventDefault(); // Prevent the default scroll behavior
+        });
+
+        // Highlight the first nav link on load
+        updateActiveLink();
+    </script>
+
+</body>
+
+</html>
