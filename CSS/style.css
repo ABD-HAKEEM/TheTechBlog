@@ -101,19 +101,24 @@
   }
 
   @media (max-width: 1023px) {
-    .horizontal-scroll-wrapper {
-      display: flex;
-      flex-direction: row;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      height: 100vh;
-    }
+   .horizontal-scroll-wrapper {
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  height: 100vh;
+  width: 100vw;
+}
 
-    .scroll-section {
-      flex: 0 0 100vw;
-      scroll-snap-align: start;
-      height: 100vh;
-    }
+.scroll-section {
+  scroll-snap-align: start;
+  width: 100vw;
+  min-height: 100vh; /* <-- key change: allows taller content */
+  box-sizing: border-box;
+  padding: 2rem; /* Optional: give some padding for readability */
+}
+
   }
 
   /* Particle animation */
