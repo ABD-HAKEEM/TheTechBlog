@@ -1,562 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Code Chronicles of Hakeem Fareedh</title>
-    <link rel="icon" href="favicon.ico" type="Images/x-icon" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      defer
-      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="/CSS/style.css" />
-    <style>
-       /* Custom scrollbar */
- ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Code Chronicles of Hakeem Fareedh</title>
+  <link rel="icon" href="favicon.ico" type="Images/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  ::-webkit-scrollbar-track {
-    background: #111;
-  }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="/TheTechBlog/CSS/style.css" />
+</head>
 
-  ::-webkit-scrollbar-thumb {
-    background: #f97316;
-    border-radius: 4px;
-  }
+<body class="bg-gray-900 text-gray-100 overflow-hidden">
+  <!-- Progress bar -->
+  <div class="progress-bar" id="progressBar"></div>
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: #e45c04;
-  }
+  <!-- Mobile navigation toggle -->
+  <button id="mobileNavToggle"
+    class="fixed top-5 right-5 z-50 bg-orange-500 text-white p-2 rounded-md shadow-lg lg:hidden animate__animated animate__fadeIn">
+    <i class="fas fa-bars"></i>
+  </button>
 
-  /* Scroll snap */
-  .scroll-snap {
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-  }
+  <!-- Main content -->
+  <div class="horizontal-scroll-wrapper scroll-snap" id="scroll-container">
+    <!-- Section 1: Hero Section -->
+    <section id="section1"
+      class="scroll-section scroll-snap-item bg-gray-900 relative flex items-center justify-center min-h-screen">
+      <!-- Animated background blobs -->
+      <div class="blob w-96 h-96 top-20 left-20 opacity-20"></div>
+      <div class="blob w-64 h-64 bottom-20 right-40 opacity-15"></div>
 
-  .scroll-snap-item {
-    scroll-snap-align: start;
-  }
+      <!-- Mobile sidebar -->
+      <div id="mobileSidebar"
+        class="fixed inset-0 bg-gray-900 z-40 transform -translate-x-full transition-transform duration-300 lg:hidden">
+        <div class="flex flex-col h-full p-8">
+          <button id="closeSidebar" class="self-start text-2xl mb-10">
+            <i class="fas fa-times"></i>
+          </button>
 
-  /* Page load animations */
-  .animate-fade-in {
-    animation: fadeIn 1s ease-in-out;
-  }
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  /* Hover effects */
-  .tech-skill {
-    transition: all 0.3s ease;
-  }
-
-  .tech-skill:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
-  }
-
-  /* Underline animation */
-  .underline-animation {
-    position: relative;
-    padding-bottom: 5px;
-    transition: all 0.3s ease;
-  }
-
-  .underline-animation::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #f97316;
-    transition: width 0.3s ease;
-  }
-
-  .underline-animation:hover::after {
-    width: 100%;
-  }
-
-  /* Card hover animation */
-  .card-hover {
-    transition: all 0.3s ease;
-  }
-
-  .card-hover:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(249, 115, 22, 0.2);
-  }
-
-  /* Custom media queries for scroll behavior */
-  @media (min-width: 1024px) {
-    .horizontal-scroll-wrapper {
-      display: flex;
-      flex-direction: row;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      height: 100vh;
-    }
-
-    .scroll-section {
-      flex: 0 0 100vw;
-      scroll-snap-align: start;
-      height: 100vh;
-    }
-  }
-
-  @media (max-width: 1023px) {
-    .horizontal-scroll-wrapper {
-      display: block;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
-
-    .scroll-section {
-      min-height: 100vh;
-      width: 100%;
-    }
-  }
-
-  /* Particle animation */
-  .particle {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    background: #f97316;
-    opacity: 0.6;
-  }
-
-  /* Progress bar */
-  .progress-bar {
-    height: 5px;
-    background: #f97316;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    transition: width 0.2s ease;
-  }
-
-  /* Floating animation */
-  .floating {
-    animation: floating 3s ease-in-out infinite;
-  }
-
-  @keyframes floating {
-    0% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-15px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
-  }
-
-  /* Typing animation */
-  .typing-animation {
-    border-right: 2px solid #f97316;
-    white-space: nowrap;
-    overflow: hidden;
-    margin: 0 auto;
-    animation: typing 3.5s steps(40, end),
-      blink-caret 0.75s step-end infinite;
-  }
-
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-
-  @keyframes blink-caret {
-    from,
-    to {
-      border-color: transparent;
-    }
-    50% {
-      border-color: #f97316;
-    }
-  }
-
-  /* Custom blob animation */
-  .blob {
-    background: rgba(249, 115, 22, 0.2);
-    border-radius: 50%;
-    filter: blur(40px);
-    position: absolute;
-    z-index: -1;
-    animation: blob-move 15s infinite alternate;
-  }
-
-  @keyframes blob-move {
-    0% {
-      transform: translate(0, 0) scale(1);
-    }
-    33% {
-      transform: translate(50px, -20px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 40px) scale(0.9);
-    }
-    100% {
-      transform: translate(30px, 10px) scale(1.05);
-    }
-  }
-
-  /* Project card hover effect */
-  .project-card {
-    transition: all 0.4s ease;
-    overflow: hidden;
-  }
-
-  .project-card:hover {
-    transform: translateY(-10px);
-  }
-
-  .project-card .project-overlay {
-    transition: all 0.4s ease;
-    opacity: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-  }
-
-  .project-card:hover .project-overlay {
-    opacity: 1;
-  }
-
-  .project-card img {
-    transition: all 0.5s ease;
-  }
-
-  .project-card:hover img {
-    transform: scale(1.1);
-  }
-
-  /* Form input styles */
-  .form-input {
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-  }
-
-  .form-input:focus {
-    border-color: #f97316;
-    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.3);
-  }
-    </style>
-  </head>
-
-  <body class="bg-gray-900 text-gray-100 overflow-hidden">
-    <!-- Progress bar -->
-    <div class="progress-bar" id="progressBar"></div>
-
-    <!-- Mobile navigation toggle -->
-    <button
-      id="mobileNavToggle"
-      class="fixed top-5 right-5 z-50 bg-orange-500 text-white p-2 rounded-md shadow-lg lg:hidden animate__animated animate__fadeIn"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Main content -->
-    <div class="horizontal-scroll-wrapper scroll-snap" id="scroll-container">
-      <!-- Section 1: Hero Section -->
-      <section
-        id="section1"
-        class="scroll-section scroll-snap-item bg-gray-900 relative flex items-center justify-center min-h-screen"
-      >
-        <!-- Animated background blobs -->
-        <div class="blob w-96 h-96 top-20 left-20 opacity-20"></div>
-        <div class="blob w-64 h-64 bottom-20 right-40 opacity-15"></div>
-
-        <!-- Mobile sidebar -->
-        <div
-          id="mobileSidebar"
-          class="fixed inset-0 bg-gray-900 z-40 transform -translate-x-full transition-transform duration-300 lg:hidden"
-        >
-          <div class="flex flex-col h-full p-8">
-            <button id="closeSidebar" class="self-end text-2xl mb-10">
-              <i class="fas fa-times"></i>
-            </button>
-
-            <div class="flex flex-col items-center">
-              <div
-                class="w-32 h-32 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 mb-6 overflow-hidden"
-              >
-                <img
-                  src="/Images/imglogo1.jpg"
-                  alt="Hakeem Fareedh"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <h2 class="text-2xl font-bold mb-10 text-orange-500">
-                Hakeem Fareedh
-              </h2>
+          <div class="flex flex-col items-center">
+            <div class="w-32 h-32 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 mb-6 overflow-hidden">
+              <img src="/TheTechBlog/Images/imglogo1.jpg" alt="Hakeem Fareedh" class="w-full h-full object-cover" />
             </div>
-
-            <nav class="flex-1">
-              <ul class="space-y-6">
-                <li>
-                  <a
-                    href="#section1"
-                    class="block py-2 text-xl underline-animation mobile-nav-link"
-                    >Home</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#section2"
-                    class="block py-2 text-xl underline-animation mobile-nav-link"
-                    >About</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#section3"
-                    class="block py-2 text-xl underline-animation mobile-nav-link"
-                    >Tech Stack</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#section4"
-                    class="block py-2 text-xl underline-animation mobile-nav-link"
-                    >Projects</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#section5"
-                    class="block py-2 text-xl underline-animation mobile-nav-link"
-                    >Contact</a
-                  >
-                </li>
-              </ul>
-            </nav>
-
-            <div class="mt-auto">
-              <ul class="flex space-x-4 justify-center">
-                <li>
-                  <a
-                    href="https://github.com/ABD-HAKEEM"
-                    class="text-xl text-orange-500 hover:text-orange-300 transition-colors"
-                    ><i class="fab fa-github"></i
-                  ></a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.linkedin.com/in/abdul-hakeem-0168481b6/"
-                    class="text-xl text-orange-500 hover:text-orange-300 transition-colors"
-                    ><i class="fab fa-linkedin"></i
-                  ></a>
-                </li>
-                <li>
-
-                 
-                  <a
-                    href="https://x.com/hakeemabdul64?s=21&t=U5HyMqjdbYhGK1RxqxY2xQ"
-                    class="text-xl text-orange-500 hover:text-orange-300 transition-colors"
-                    ><i class="fa-brands fa-x-twitter"></i></a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="text-xl text-orange-500 hover:text-orange-300 transition-colors"
-                    ><i class="fab fa-whatsapp"></i
-                  ></a>
-                </li>
-              </ul>
-              <p class="text-xs text-center mt-6 text-gray-400">
-                © Copyright 2025 Go-Smart solutions.<br />All rights reserved.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Desktop sidebar -->
-        <div
-          class="hidden lg:block fixed left-0 top-0 h-screen w-80 bg-gray-800 shadow-lg z-30 animate__animated animate__slideInLeft"
-        >
-          <div class="flex flex-col h-full">
-            <div class="p-8 text-center">
-              <div
-                class="w-40 h-40 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 mx-auto mb-6 overflow-hidden"
-              >
-                <img
-                  src="/Images/imglogo1.jpg"
-                  alt="Hakeem Fareedh"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <h2 class="text-2xl font-bold tracking-wide text-orange-500">
-                Hakeem Fareedh
-              </h2>
-              <p class="text-gray-400 mt-2">Software Engineer</p>
-            </div>
-
-            <nav class="px-8 py-6 flex-1">
-              <ul class="space-y-4">
-                <li>
-                  <a
-                    href="#section1"
-                    class="block py-2 text-lg underline-animation nav-link"
-                    >Home</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#section2"
-                    class="block py-2 text-lg underline-animation nav-link"
-                    >About</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#section3"
-                    class="block py-2 text-lg underline-animation nav-link"
-                    >Tech Stack</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#section4"
-                    class="block py-2 text-lg underline-animation nav-link"
-                    >Projects</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#section5"
-                    class="block py-2 text-lg underline-animation nav-link"
-                    >Contact</a
-                  >
-                </li>
-              </ul>
-            </nav>
-
-            <div class="p-8 mt-auto">
-              <ul class="flex space-x-4 justify-center">
-                <li>
-                  <a
-                    href="https://github.com/ABD-HAKEEM"
-                    class="text-xl text-orange-500 hover:text-orange-300 transition-colors"
-                    ><i class="fab fa-github"></i
-                  ></a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.linkedin.com/in/abdul-hakeem-0168481b6/"
-                    class="text-xl text-orange-500 hover:text-orange-300 transition-colors"
-                    ><i class="fab fa-linkedin"></i
-                  ></a>
-                </li>
-                <li>
-                  <a
-                    href="https://x.com/hakeemabdul64?s=21&t=U5HyMqjdbYhGK1RxqxY2xQ"
-                    class="text-xl text-orange-500 hover:text-orange-300 transition-colors"
-                    ><i class="fa-brands fa-x-twitter"></i></a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="text-xl text-orange-500 hover:text-orange-300 transition-colors"
-                    ><i class="fab fa-whatsapp"></i
-                  ></a>
-                </li>
-              </ul>
-              <p class="text-xs text-center mt-6 text-gray-400">
-                © Copyright 2025 Go-Smart solutions.<br />All rights reserved.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hero content -->
-        <div
-          class="container mx-auto px-6 lg:pl-80 flex flex-col lg:flex-row items-center justify-between min-h-screen lg-ml-10"
-        >
-          <div class="w-full lg:w-1/2 animate__animated animate__fadeIn">
-            <h1 class="text-4xl lg:text-6xl font-bold mb-4">
-              <span class="block text-orange-500 typing-animation"
-                >Hello, I'm Hakee</span
-              >
-            </h1>
-            <h2 class="text-3xl lg:text-4xl font-bold mb-6">
-              <span
-                class="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500"
-              >
-                Software Engineer & Developer
-              </span>
+            <h2 class="text-2xl font-bold mb-10 text-orange-500">
+              Hakeem Fareedh
             </h2>
-            <p class="text-xl text-gray-300 mb-8 max-w-lg">
-              I build exceptional digital experiences with clean <br />code and
-              modern technologies. Let's transform <br />your ideas into
-              reality.
-            </p>
-
-            <div class="flex flex-wrap gap-4">
-              <a
-                href="#section5"
-                class="inline-block bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
-              >
-                Get In Touch
-              </a>
-              <a
-                href="#section4"
-                class="inline-block bg-transparent border-2 border-orange-500 text-orange-500 font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:bg-orange-500 hover:text-white hover:shadow-xl"
-              >
-                View My Work
-              </a>
-            </div>
-
-            <div class="mt-12 flex items-center">
-              <span class="text-gray-400 mr-4">Scroll down</span>
-              <div class="animate-bounce text-orange-500">
-                <i class="fas fa-arrow-down"></i>
-              </div>
-            </div>
           </div>
 
-          <!-- hero 2 -->
-          <div
-            class="w-full lg:w-1/2 mt-12 lg:mt-0 hidden lg:flex justify-end pl-11"
-          >
-            <div class="relative">
-              <div
-                class="absolute -inset-0.5 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg blur-xl opacity-50"
-              ></div>
-              <div
-                class="relative bg-gray-800 p-8 rounded-lg border border-gray-700 shadow-2xl"
-              >
-                <pre class="text-sm text-gray-300 font-mono">
+          <nav class="flex-1">
+            <ul class="space-y-6">
+              <li>
+                <a href="#section1" class="block py-2 text-xl underline-animation mobile-nav-link">Home</a>
+              </li>
+              <li>
+                <a href="#section2" class="block py-2 text-xl underline-animation mobile-nav-link">About</a>
+              </li>
+              <li>
+                <a href="#section3" class="block py-2 text-xl underline-animation mobile-nav-link">Tech Stack</a>
+              </li>
+              <li>
+                <a href="#section4" class="block py-2 text-xl underline-animation mobile-nav-link">Projects</a>
+              </li>
+              <li>
+                <a href="#section5" class="block py-2 text-xl underline-animation mobile-nav-link">Contact</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="mt-auto">
+            <ul class="flex space-x-4 justify-center">
+              <li>
+                <a href="https://github.com/ABD-HAKEEM"
+                  class="text-xl text-orange-500 hover:text-orange-300 transition-colors"><i
+                    class="fab fa-github"></i></a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/abdul-hakeem-0168481b6/"
+                  class="text-xl text-orange-500 hover:text-orange-300 transition-colors"><i
+                    class="fab fa-linkedin"></i></a>
+              </li>
+              <li>
+
+
+                <a href="https://x.com/hakeemabdul64?s=21&t=U5HyMqjdbYhGK1RxqxY2xQ"
+                  class="text-xl text-orange-500 hover:text-orange-300 transition-colors"><i
+                    class="fa-brands fa-x-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#" class="text-xl text-orange-500 hover:text-orange-300 transition-colors"><i
+                    class="fab fa-whatsapp"></i></a>
+              </li>
+            </ul>
+            <p class="text-xs text-center mt-6 text-gray-400">
+              © Copyright 2025 Go-Smart solutions.<br />All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop sidebar -->
+      <div
+        class="hidden lg:block fixed left-0 top-0 h-screen w-80 bg-gray-800 shadow-lg z-30 animate__animated animate__slideInLeft">
+        <div class="flex flex-col h-full">
+          <div class="p-8 text-center">
+            <div
+              class="w-40 h-40 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 mx-auto mb-6 overflow-hidden">
+              <img src="/TheTechBlog/Images/imglogo1.jpg" alt="Hakeem Fareedh" class="w-full h-full object-cover" />
+            </div>
+            <h2 class="text-2xl font-bold tracking-wide text-orange-500">
+              Hakeem Fareedh
+            </h2>
+            <p class="text-gray-400 mt-2">Software Engineer</p>
+          </div>
+
+          <nav class="px-8 py-6 flex-1">
+            <ul class="space-y-4">
+              <li>
+                <a href="#section1" class="block py-2 text-lg underline-animation nav-link">Home</a>
+              </li>
+              <li>
+                <a href="#section2" class="block py-2 text-lg underline-animation nav-link">About</a>
+              </li>
+              <li>
+                <a href="#section3" class="block py-2 text-lg underline-animation nav-link">Tech Stack</a>
+              </li>
+              <li>
+                <a href="#section4" class="block py-2 text-lg underline-animation nav-link">Projects</a>
+              </li>
+              <li>
+                <a href="#section5" class="block py-2 text-lg underline-animation nav-link">Contact</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="p-8 mt-auto">
+            <ul class="flex space-x-4 justify-center">
+              <li>
+                <a href="https://github.com/ABD-HAKEEM"
+                  class="text-xl text-orange-500 hover:text-orange-300 transition-colors"><i
+                    class="fab fa-github"></i></a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/abdul-hakeem-0168481b6/"
+                  class="text-xl text-orange-500 hover:text-orange-300 transition-colors"><i
+                    class="fab fa-linkedin"></i></a>
+              </li>
+              <li>
+                <a href="https://x.com/hakeemabdul64?s=21&t=U5HyMqjdbYhGK1RxqxY2xQ"
+                  class="text-xl text-orange-500 hover:text-orange-300 transition-colors"><i
+                    class="fa-brands fa-x-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#" class="text-xl text-orange-500 hover:text-orange-300 transition-colors"><i
+                    class="fab fa-whatsapp"></i></a>
+              </li>
+            </ul>
+            <p class="text-xs text-center mt-6 text-gray-400">
+              © Copyright 2025 Go-Smart solutions.<br />All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero content -->
+
+      <div
+        class="container mx-auto px-6 mt-96 lg:mt-0 lg:pl-80 flex flex-col lg:flex-row  items-center justify-between min-h-screen lg-ml-10">
+        <div class="grid grid-cols-2">
+
+        </div>
+        <div class="w-full lg:w-1/2 animate__animated animate__fadeIn">
+          <h1 class="text-4xl lg:text-6xl font-bold mb-4">
+            <span class="block text-orange-500 typing-animation">Hello, I'm Hakee</span>
+          </h1>
+          <h2 class="text-3xl lg:text-4xl font-bold mb-6">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500">
+              Software Engineer & Developer
+            </span>
+          </h2>
+          <p class="text-xl text-gray-300 mb-8 max-w-lg">
+            I build exceptional digital experiences with clean <br />code and
+            modern technologies. Let's transform <br />your ideas into
+            reality.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="#section5"
+              class="inline-block bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+              Get In Touch
+            </a>
+            <a href="#section4"
+              class="inline-block bg-transparent border-2 border-orange-500 text-orange-500 font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:bg-orange-500 hover:text-white hover:shadow-xl">
+              View My Work
+            </a>
+          </div>
+
+          <div class="mt-12 flex items-center">
+            <span class="text-gray-400 mr-4">Scroll down</span>
+            <div class="animate-bounce text-orange-500">
+              <i class="fas fa-arrow-down"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- hero 2 -->
+        <div class="w-full lg:w-1/2 mt-12 ml-[-50px] lg:ml-0 lg:mt-0  lg:flex justify-end pl-11">
+          <div class="relative">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg blur-xl opacity-50">
+            </div>
+            <div class="relative bg-gray-800 p-8 rounded-lg border border-gray-700 shadow-2xl">
+              <pre class="text-sm text-gray-300 font-mono">
   <span class="text-pink-500">class</span> <span class="text-orange-400">SoftwareEngineer</span> {
     <span class="text-pink-500">constructor</span>() {
         <span class="text-pink-500">this</span>.name = <span class="text-green-400">"Hakeem Fareedh"</span>;
@@ -583,162 +242,146 @@
     }
   }
                             </pre>
-                <div class="flex justify-between mt-4 text-sm text-gray-400">
-                  <span>experience.js</span>
-                  <span>2 years of coding experience</span>
-                </div>
+              <div class="flex justify-between mt-4 text-sm text-gray-400">
+                <span>experience.js</span>
+                <span>2 years of coding experience</span>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- Section 2: About Me -->
-      <section
-        id="section2"
-        class="scroll-section scroll-snap-item bg-gray-900 relative min-h-screen"
-      >
-        <!-- Background elements -->
-        <div class="blob w-96 h-96 bottom-0 left-1/4 opacity-10"></div>
-        <div class="blob w-80 h-80 top-20 right-20 opacity-15"></div>
+      </div>
 
-        <div
-          class="container mx-auto px-6 lg:pl-96 py-20 min-h-screen flex items-center"
-        >
-          <div class="w-full">
-            <div class="flex items-center mb-12">
-              <div class="w-16 h-1 bg-orange-500 mr-4"></div>
-              <h2 class="text-4xl font-bold">About Me</h2>
-            </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div>
-                <p class="text-xl text-gray-300 mb-6">
-                  As a passionate Software Engineer with 2 years of experience,
-                  I specialize in building robust, scalable applications that
-                  solve real-world problems.
-                </p>
-                <p class="text-xl text-gray-300 mb-6">
-                  I'm a Software Engineering student currently stepping into my
-                  final year. My journey in development has been shaped by
-                  practical projects and continuous learning. I'm passionate
-                  about building efficient, real-world software solutions.
-                </p>
-                <p class="text-xl text-gray-300 mb-6">
-                  I believe in writing clean, maintainable code and creating
-                  intuitive user experiences. My approach combines technical
-                  expertise with creative problem-solving to deliver
-                  high-quality solutions.
-                </p>
+    </section>
 
-                <div class="grid grid-cols-2 gap-4 mt-12">
-                  <div>
-                    <h3 class="text-xl font-bold text-orange-500 mb-4">
-                      Education
-                    </h3>
-                    <ul class="space-y-4">
-                      <li>
-                        <p class="font-bold">BEng Software Engineering</p>
-                        <p class="text-gray-400">
-                          APIIT, University of Staffordshire, United Kingdom
-                        </p>
-                        <p class="text-sm text-gray-500">2023 – Present</p>
-                      </li>
-                    </ul>
-                  </div>
+    <!-- Section 2: About Me -->
+    <section id="section2" class="scroll-section scroll-snap-item bg-gray-900 relative min-h-screen">
+      <!-- Background elements -->
+      <div class="blob w-96 h-96 bottom-0 left-1/4 opacity-10"></div>
+      <div class="blob w-80 h-80 top-20 right-20 opacity-15"></div>
 
-                  <div>
-                    <h3 class="text-xl font-bold text-orange-500 mb-4">
-                      Experience
-                    </h3>
-                    <ul class="space-y-4">
-                      <li>
-                        <p class="font-bold">Software Developer</p>
-                        <p class="text-gray-400">Go-Smart Solutions</p>
-                        <p class="text-sm text-gray-500">2022 - Present</p>
-                      </li>
-                    </ul>
-                  </div>
+      <div class="container mx-auto px-6 lg:pl-96 py-20 min-h-screen flex items-center">
+        <div class="w-full">
+          <div class="flex items-center mb-12">
+            <div class="w-16 h-1 bg-orange-500 mr-4"></div>
+            <h2 class="text-4xl font-bold">About Me</h2>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+              <p class="text-xl text-gray-300 mb-6">
+                As a passionate Software Engineer with 2 years of experience,
+                I specialize in building robust, scalable applications that
+                solve real-world problems.
+              </p>
+              <p class="text-xl text-gray-300 mb-6">
+                I'm a Software Engineering student currently stepping into my
+                final year. My journey in development has been shaped by
+                practical projects and continuous learning. I'm passionate
+                about building efficient, real-world software solutions.
+              </p>
+              <p class="text-xl text-gray-300 mb-6">
+                I believe in writing clean, maintainable code and creating
+                intuitive user experiences. My approach combines technical
+                expertise with creative problem-solving to deliver
+                high-quality solutions.
+              </p>
+
+              <div class="grid grid-cols-2 gap-4 mt-12">
+                <div>
+                  <h3 class="text-xl font-bold text-orange-500 mb-4">
+                    Education
+                  </h3>
+                  <ul class="space-y-4">
+                    <li>
+                      <p class="font-bold">BEng Software Engineering</p>
+                      <p class="text-gray-400">
+                        APIIT, University of Staffordshire, United Kingdom
+                      </p>
+                      <p class="text-sm text-gray-500">2023 – Present</p>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-bold text-orange-500 mb-4">
+                    Experience
+                  </h3>
+                  <ul class="space-y-4">
+                    <li>
+                      <p class="font-bold">Software Developer</p>
+                      <p class="text-gray-400">Go-Smart Solutions</p>
+                      <p class="text-sm text-gray-500">2022 - Present</p>
+                    </li>
+                  </ul>
                 </div>
               </div>
+            </div>
 
-              <div class="flex flex-col justify-center">
-                <div class="relative">
-                  <div
-                    class="absolute -inset-2 bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl blur opacity-20"
-                  ></div>
-                  <div
-                    class="relative bg-gray-800 rounded-xl p-8 shadow-xl border border-gray-700"
-                  >
-                    <h3 class="text-2xl font-bold mb-6 text-orange-500">
-                      Core Skills & Competencies
-                    </h3>
+            <div class="flex flex-col justify-center">
+              <div class="relative">
+                <div class="absolute -inset-2 bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl blur opacity-20">
+                </div>
+                <div class="relative bg-gray-800 rounded-xl p-8 shadow-xl border border-gray-700">
+                  <h3 class="text-2xl font-bold mb-6 text-orange-500">
+                    Core Skills & Competencies
+                  </h3>
 
-                    <div class="space-y-6">
-                      <div>
-                        <div class="flex justify-between items-center mb-2">
-                          <h4 class="font-bold">Front-end Development</h4>
-                          <span class="text-orange-500">90%</span>
-                        </div>
-                        <div class="w-full bg-gray-700 rounded-full h-2">
-                          <div
-                            class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full"
-                            style="width: 90%"
-                          ></div>
+                  <div class="space-y-6">
+                    <div>
+                      <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-bold">Front-end Development</h4>
+                        <span class="text-orange-500">90%</span>
+                      </div>
+                      <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 90%">
                         </div>
                       </div>
+                    </div>
 
-                      <div>
-                        <div class="flex justify-between items-center mb-2">
-                          <h4 class="font-bold">Back-end Development</h4>
-                          <span class="text-orange-500">85%</span>
-                        </div>
-                        <div class="w-full bg-gray-700 rounded-full h-2">
-                          <div
-                            class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full"
-                            style="width: 85%"
-                          ></div>
+                    <div>
+                      <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-bold">Back-end Development</h4>
+                        <span class="text-orange-500">85%</span>
+                      </div>
+                      <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 85%">
                         </div>
                       </div>
+                    </div>
 
-                      <div>
-                        <div class="flex justify-between items-center mb-2">
-                          <h4 class="font-bold">Database Management</h4>
-                          <span class="text-orange-500">80%</span>
-                        </div>
-                        <div class="w-full bg-gray-700 rounded-full h-2">
-                          <div
-                            class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full"
-                            style="width: 80%"
-                          ></div>
+                    <div>
+                      <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-bold">Database Management</h4>
+                        <span class="text-orange-500">80%</span>
+                      </div>
+                      <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 80%">
                         </div>
                       </div>
+                    </div>
 
-                      <div>
-                        <div class="flex justify-between items-center mb-2">
-                          <h4 class="font-bold">DevOps</h4>
-                          <span class="text-orange-500">75%</span>
-                        </div>
-                        <div class="w-full bg-gray-700 rounded-full h-2">
-                          <div
-                            class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full"
-                            style="width: 75%"
-                          ></div>
+                    <div>
+                      <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-bold">DevOps</h4>
+                        <span class="text-orange-500">75%</span>
+                      </div>
+                      <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 75%">
                         </div>
                       </div>
+                    </div>
 
-                      <div>
-                        <div class="flex justify-between items-center mb-2">
-                          <h4 class="font-bold">
-                            Web Hosting & Server Managements
-                          </h4>
-                          <span class="text-orange-500">85%</span>
-                        </div>
-                        <div class="w-full bg-gray-700 rounded-full h-2">
-                          <div
-                            class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full"
-                            style="width: 85%"
-                          ></div>
+                    <div>
+                      <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-bold">
+                          Web Hosting & Server Managements
+                        </h4>
+                        <span class="text-orange-500">85%</span>
+                      </div>
+                      <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 85%">
                         </div>
                       </div>
                     </div>
@@ -748,1189 +391,1042 @@
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Section 3: Tech Stack -->
-      <section
-        id="section3"
-        class="scroll-section scroll-snap-item bg-gray-900 relative min-h-screen"
-      >
-        <!-- Background elements -->
-        <div class="blob w-96 h-96 top-0 right-1/4 opacity-10"></div>
-        <div class="blob w-64 h-64 bottom-20 left-20 opacity-15"></div>
+    <!-- Section 3: Tech Stack -->
+    <section id="section3" class="scroll-section scroll-snap-item bg-gray-900 relative min-h-screen">
+      <!-- Background elements -->
+      <div class="blob w-96 h-96 top-0 right-1/4 opacity-10"></div>
+      <div class="blob w-64 h-64 bottom-20 left-20 opacity-15"></div>
 
-        <div
-          class="container mx-auto px-6 lg:pl-96 py-20 min-h-screen flex items-center"
-        >
-          <div class="w-full">
-            <div class="flex items-center mb-12">
-              <div class="w-16 h-1 bg-orange-500 mr-4"></div>
-              <h2 class="text-4xl font-bold">Tech Stack</h2>
+      <div class="container mx-auto px-6 lg:pl-96 py-20 min-h-screen flex items-center">
+        <div class="w-full">
+          <div class="flex items-center mb-12">
+            <div class="w-16 h-1 bg-orange-500 mr-4"></div>
+            <h2 class="text-4xl font-bold">Tech Stack</h2>
+          </div>
+
+          <p class="text-xl text-gray-300 mb-12 max-w-3xl">
+            My toolkit is diverse and constantly evolving. Here are the
+            technologies I work with to build robust, scalable, and modern
+            applications.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+            <!-- Frontend -->
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fab fa-html5"></i>
+              </div>
+              <h3 class="text-center font-bold">HTML5</h3>
             </div>
-
-            <p class="text-xl text-gray-300 mb-12 max-w-3xl">
-              My toolkit is diverse and constantly evolving. Here are the
-              technologies I work with to build robust, scalable, and modern
-              applications.
-            </p>
 
             <div
-              class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8"
-            >
-              <!-- Frontend -->
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fab fa-html5"></i>
-                </div>
-                <h3 class="text-center font-bold">HTML5</h3>
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fab fa-css3-alt"></i>
               </div>
+              <h3 class="text-center font-bold">CSS3</h3>
+            </div>
 
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fab fa-css3-alt"></i>
-                </div>
-                <h3 class="text-center font-bold">CSS3</h3>
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fab fa-js"></i>
               </div>
+              <h3 class="text-center font-bold">JavaScript</h3>
+            </div>
 
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fab fa-js"></i>
-                </div>
-                <h3 class="text-center font-bold">JavaScript</h3>
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fab fa-react"></i>
               </div>
+              <h3 class="text-center font-bold">React</h3>
+            </div>
 
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fab fa-react"></i>
-                </div>
-                <h3 class="text-center font-bold">React</h3>
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 flex items-center justify-center">
+                <img src="https://cdn.simpleicons.org/nextdotjs/ff7b00" alt="Next.js" class="w-10 h-10" />
               </div>
+              <h3 class="text-center font-bold text-white">Next.js</h3>
+            </div>
 
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div class="w-16 h-16 mb-4 flex items-center justify-center">
-                  <img
-                    src="https://cdn.simpleicons.org/nextdotjs/ff7b00"
-                    alt="Next.js"
-                    class="w-10 h-10"
-                  />
-                </div>
-                <h3 class="text-center font-bold text-white">Next.js</h3>
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fas fa-wind"></i>
               </div>
+              <h3 class="text-center font-bold">Tailwind</h3>
+            </div>
 
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fas fa-wind"></i>
-                </div>
-                <h3 class="text-center font-bold">Tailwind</h3>
+            <!-- Backend -->
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fab fa-php"></i>
               </div>
+              <h3 class="text-center font-bold">PHP</h3>
+            </div>
 
-              <!-- Backend -->
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fab fa-php"></i>
-                </div>
-                <h3 class="text-center font-bold">PHP</h3>
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 flex items-center justify-center">
+                <img src="https://img.icons8.com/?size=100&id=IrweDE7xR0mF&format=png&color=f97316" alt="VB 6.0"
+                  class="w-14 h-14 object-contain" />
               </div>
+              <h3 class="text-center font-bold text-white">VB 6.0</h3>
+            </div>
 
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div class="w-16 h-16 mb-4 flex items-center justify-center">
-                  <img
-                    src="https://img.icons8.com/?size=100&id=IrweDE7xR0mF&format=png&color=f97316"
-                    alt="VB 6.0"
-                    class="w-14 h-14 object-contain"
-                  />
-                </div>
-                <h3 class="text-center font-bold text-white">VB 6.0</h3>
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 flex items-center justify-center">
+                <img src="https://img.icons8.com/?size=100&id=14723&format=png&color=f97316" alt="Alpine.js"
+                  class="w-14 h-14 object-contain" />
               </div>
+              <h3 class="text-center font-bold text-white">Alpine.js</h3>
+            </div>
 
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div class="w-16 h-16 mb-4 flex items-center justify-center">
-                  <img
-                    src="https://img.icons8.com/?size=100&id=14723&format=png&color=f97316"
-                    alt="Alpine.js"
-                    class="w-14 h-14 object-contain"
-                  />
-                </div>
-                <h3 class="text-center font-bold text-white">Alpine.js</h3>
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fab fa-node-js"></i>
               </div>
+              <h3 class="text-center font-bold">Node.js</h3>
+            </div>
 
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fab fa-node-js"></i>
-                </div>
-                <h3 class="text-center font-bold">Node.js</h3>
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 -960 960 960" fill="#f97316">
+                  <path d="M236-345 100-480l440-440h271L236-345ZM540-40 303-277l237-237h271L574-277 811-40H540Z" />
+                </svg>
               </div>
+              <h3 class="text-center font-bold">Flutter</h3>
+            </div>
 
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-10 h-10"
-                    viewBox="0 -960 960 960"
-                    fill="#f97316"
-                  >
-                    <path
-                      d="M236-345 100-480l440-440h271L236-345ZM540-40 303-277l237-237h271L574-277 811-40H540Z"
-                    />
-                  </svg>
-                </div>
-                <h3 class="text-center font-bold">Flutter</h3>
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fab fa-laravel"></i>
               </div>
+              <h3 class="text-center font-bold">Laravel</h3>
+            </div>
 
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fab fa-laravel"></i>
-                </div>
-                <h3 class="text-center font-bold">Laravel</h3>
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fas fa-code-branch"></i>
               </div>
+              <h3 class="text-center font-bold">.NET</h3>
+            </div>
 
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
+            <!-- Database -->
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fa-solid fa-server"></i>
+              </div>
+              <h3 class="text-center font-bold">MSSQL</h3>
+            </div>
+
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fas fa-database"></i>
+              </div>
+              <h3 class="text-center font-bold">MySQL</h3>
+            </div>
+
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fas fa-server"></i>
+              </div>
+              <h3 class="text-center font-bold">MongoDB</h3>
+            </div>
+
+            <!-- DevOps -->
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fab fa-git-alt"></i>
+              </div>
+              <h3 class="text-center font-bold">Git</h3>
+            </div>
+
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fa-brands fa-cpanel"></i>
+              </div>
+              <h3 class="text-center font-bold">Cpanel</h3>
+            </div>
+
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fab fa-aws"></i>
+              </div>
+              <h3 class="text-center font-bold">AWS</h3>
+            </div>
+
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fas fa-cloud"></i>
+              </div>
+              <h3 class="text-center font-bold">Azure</h3>
+            </div>
+
+            <!-- Tools -->
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fas fa-code"></i>
+              </div>
+              <h3 class="text-center font-bold">VS Code</h3>
+            </div>
+
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fa-solid fa-laptop-code"></i>
+              </div>
+              <h3 class="text-center font-bold">Visual Studion Code</h3>
+            </div>
+
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fa-solid fa-file-code"></i>
+              </div>
+              <h3 class="text-center font-bold">Project IDX</h3>
+            </div>
+
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fas fa-terminal"></i>
+              </div>
+              <h3 class="text-center font-bold">CLI</h3>
+            </div>
+
+            <div
+              class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700">
+              <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                <i class="fa-solid fa-code-branch"></i>
+              </div>
+              <h3 class="text-center font-bold">Firebase</h3>
+            </div>
+          </div>
+
+          <div class="mt-16">
+            <h3 class="text-2xl font-bold text-orange-500 mb-6">
+              Development Approach
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+                <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
                   <i class="fas fa-code-branch"></i>
                 </div>
-                <h3 class="text-center font-bold">.NET</h3>
-              </div>
-
-              <!-- Database -->
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fa-solid fa-server"></i>
-                </div>
-                <h3 class="text-center font-bold">MSSQL</h3>
-              </div>
-
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fas fa-database"></i>
-                </div>
-                <h3 class="text-center font-bold">MySQL</h3>
-              </div>
-
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fas fa-server"></i>
-                </div>
-                <h3 class="text-center font-bold">MongoDB</h3>
-              </div>
-
-              <!-- DevOps -->
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fab fa-git-alt"></i>
-                </div>
-                <h3 class="text-center font-bold">Git</h3>
-              </div>
-
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fa-brands fa-cpanel"></i>
-                </div>
-                <h3 class="text-center font-bold">Cpanel</h3>
-              </div>
-
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fab fa-aws"></i>
-                </div>
-                <h3 class="text-center font-bold">AWS</h3>
-              </div>
-
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fas fa-cloud"></i>
-                </div>
-                <h3 class="text-center font-bold">Azure</h3>
-              </div>
-
-              <!-- Tools -->
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fas fa-code"></i>
-                </div>
-                <h3 class="text-center font-bold">VS Code</h3>
-              </div>
-
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fa-solid fa-laptop-code"></i>
-                </div>
-                <h3 class="text-center font-bold">Visual Studion Code</h3>
-              </div>
-
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fa-solid fa-file-code"></i>
-                </div>
-                <h3 class="text-center font-bold">Project IDX</h3>
-              </div>
-
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fas fa-terminal"></i>
-                </div>
-                <h3 class="text-center font-bold">CLI</h3>
-              </div>
-
-              <div
-                class="tech-skill bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700"
-              >
-                <div
-                  class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                >
-                  <i class="fa-solid fa-code-branch"></i>
-                </div>
-                <h3 class="text-center font-bold">Firebase</h3>
-              </div>
-            </div>
-
-            <div class="mt-16">
-              <h3 class="text-2xl font-bold text-orange-500 mb-6">
-                Development Approach
-              </h3>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div
-                  class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700"
-                >
-                  <div
-                    class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                  >
-                    <i class="fas fa-code-branch"></i>
-                  </div>
-                  <h4 class="text-xl font-bold mb-3">Clean Architecture</h4>
-                  <p class="text-gray-300">
-                    I prioritize modular, maintainable code with clear
-                    separation of concerns and testable components.
-                  </p>
-                </div>
-
-                <div
-                  class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700"
-                >
-                  <div
-                    class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                  >
-                    <i class="fas fa-users"></i>
-                  </div>
-                  <h4 class="text-xl font-bold mb-3">User-Centered Design</h4>
-                  <p class="text-gray-300">
-                    I develop with the end user in mind, creating intuitive
-                    interfaces and seamless experiences.
-                  </p>
-                </div>
-
-                <div
-                  class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700"
-                >
-                  <div
-                    class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center"
-                  >
-                    <i class="fas fa-tachometer-alt"></i>
-                  </div>
-                  <h4 class="text-xl font-bold mb-3">Agile Methodology</h4>
-                  <p class="text-gray-300">
-                    I embrace iterative development with continuous integration
-                    and deployment to deliver value quickly.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section 4: Projects -->
-      <section
-        id="section4"
-        class="scroll-section scroll-snap-item bg-gray-900 relative min-h-screen"
-      >
-        
-        <div class="blob w-80 h-80 bottom-0 right-0 opacity-10"></div>
-        <div class="blob w-64 h-64 top-20 left-20 opacity-15"></div>
-
-        <div
-          class="container mx-auto px-6 lg:pl-96 py-20 min-h-screen flex items-center"
-        >
-          <div class="w-full">
-            <div class="flex items-center mb-12">
-              <div class="w-16 h-1 bg-orange-500 mr-4"></div>
-              <h2 class="text-4xl font-bold">Featured Projects</h2>
-            </div>
-
-            <p class="text-xl text-gray-300 mb-12 max-w-3xl">
-              Here are some of my recent projects that showcase my technical
-              skills and problem-solving abilities.
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <!-- Project 1 -->
-              <div
-                class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10"
-              >
-                <div class="relative h-48 overflow-hidden">
-                  <img
-                    src="/Images/TheFusionfork.png"
-                    alt="Restaurant E-commerce Website"
-                    class="w-full h-full object-cover"
-                  />
-                  <div class="project-overlay absolute inset-0 flex items-end">
-                    <div class="p-4">
-                      <div class="grid grid-cols-3 gap-3 mb-2">
-                        <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">PHP</span>
-                        <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">Laravel</span>
-                        <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">Tailwind</span>
-
-                        <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">HTML</span>
-                        <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">Alpine.js</span>
-
-                      </div>
-                   
-                    </div>
-                    
-                  </div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold mb-2 text-orange-500">
-                    Restaurant E-commerce Website
-                  </h3>
-                  <p class="text-gray-300 mb-4">
-                    This project creates an online platform for food orders, table reservations, interactive dining, and customer support, enhancing the dining experience and aligning with strategic goals.
-                  </p>
-                  <div class="flex space-x-4">
-                    <a
-                      href="#"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fas fa-eye mr-2"></i> Live Demo
-                    </a>
-                    <a
-                      href="https://github.com/ABD-HAKEEM/TheFusionFork.git"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fab fa-github mr-2"></i> GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Project 2 -->
-              <div
-                class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10"
-              >
-                <div class="relative h-48 overflow-hidden">
-                  <img
-                    src="/Images/mobil.png"
-                    alt="Restaurant E-commerce Mobile App"
-                    class="w-full h-full object-cover"
-                  />
-                  <div class="project-overlay absolute inset-0 flex items-end">
-                    <div class="p-4">
-                      <div class="flex space-x-3 mb-2">
-                        <span
-                          class="bg-orange-500 text-white text-xs px-2 py-1 rounded"
-                          >Flutter</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >Dart</span
-                        >
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold mb-2 text-orange-500">
-                    Restaurant E-commerce Mobile App
-                  </h3>
-                  <p class="text-gray-300 mb-4">
-                    A mobile front-end for a restaurant e-commerce app, designed for browsing menus, placing orders, and smooth user interaction.
-                  </p>
-                  <div class="flex space-x-4">
-                    <a
-                      href="#"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fas fa-eye mr-2"></i> Live Demo
-                    </a>
-                    <a
-                      href="https://github.com/ABD-HAKEEM/Mad1_TheFusionFork.git"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fab fa-github mr-2"></i> GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Project 3 -->
-              <div
-                class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10"
-              >
-                <div class="relative h-48 overflow-hidden">
-                  <img
-                    src="/Images/Cab.png"
-                    alt="Cab Management System"
-                    class="w-full h-full object-cover"
-                  />
-                  <div class="project-overlay absolute inset-0 flex items-end">
-                    <div class="p-4">
-                      <div class="grid grid-cols-3 gap-3 mb-2">
-                        <span
-                          class="bg-orange-500 text-white text-xs px-2 py-1 rounded"
-                          >C#</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >.NET</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >MSSQL</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold mb-2 text-orange-500">
-                    Cab Management System
-                  </h3>
-                  <p class="text-gray-300 mb-4">
-                    A C# OOP-based Cab Management System for managing teacher cab bookings, client-vendor coordination, and driver assignments, built as a complete end-to-end solution.
-                  </p>
-                  <div class="flex space-x-4">
-                    <a
-                      href="#"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fas fa-eye mr-2"></i> Live Demo
-                    </a>
-                    <a
-                      href="https://github.com/ABD-HAKEEM/Cab-Booking-Application.git"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fab fa-github mr-2"></i> GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Project 4 -->
-              <div
-                class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10"
-              >
-                <div class="relative h-48 overflow-hidden">
-                  <img
-                    src="/Images/Wildlife.png"
-                    alt="Sri  Lanka Wildlife Website For Project"
-                    class="w-full h-full object-cover"
-                  />
-                  <div class="project-overlay absolute inset-0 flex items-end">
-                    <div class="p-4">
-                      <div class="grid grid-cols-3 gap-3 mb-2">
-                        <span
-                          class="bg-orange-500 text-white text-xs px-2 py-1 rounded"
-                          >HTML</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >tailwindcss</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >Alpine.Js</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >CSS</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold mb-2 text-orange-500">
-                    Sri  Lanka Wildlife Website For Project
-                  </h3>
-                  <p class="text-gray-300 mb-4">
-                    My first project — a responsive website built with HTML, CSS, Alpine.js, and Tailwind CSS to showcase the wildlife of Sri Lanka with interactive features.
-                  </p>
-                  <div class="flex space-x-4">
-                    <a
-                      href="https://abd-hakeem.github.io/CB013168-WDOS-ABDULHAKEEM/"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fas fa-eye mr-2"></i> Live Demo
-                    </a>
-                    <a
-                      href="https://github.com/ABD-HAKEEM/CB013168-WDOS-ABDULHAKEEM.git"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fab fa-github mr-2"></i> GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Project 5 -->
-              <div
-                class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10"
-              >
-                <div class="relative h-48 overflow-hidden">
-                  <img
-                    src="/Images/Uniq.png"
-                    alt="Ceylon Foods Trading (Pvt) Ltd  Website"
-                    class="w-full h-full object-cover"
-                  />
-                  <div class="project-overlay absolute inset-0 flex items-end">
-                    <div class="p-4">
-                      <div class="grid grid-cols-3 gap-3 mb-2">
-                        <span
-                          class="bg-orange-500 text-white text-xs px-2 py-1 rounded"
-                          >PHP</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >HTML</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >tailwindcss</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >alpine.js</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold mb-2 text-orange-500">
-                    Ceylon Foods Trading (Pvt) Ltd  Website
-                  </h3>
-                  <p class="text-gray-300 mb-4">
-                    A dynamic website for unique food ingredients with admin-controlled customizable content, built using HTML, PHP, and Tailwind CSS.
-                  </p>
-                  <div class="flex space-x-4">
-                    <a
-                      href="https://uniqueingredients.lk"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fas fa-eye mr-2"></i> Live Demo
-                    </a>
-                    <a
-                      href="#"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fab fa-github mr-2"></i> GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Project 6 -->
-              <div
-                class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10"
-              >
-                <div class="relative h-48 overflow-hidden">
-                  <img
-                    src="/Images/Venture.png"
-                    alt="Startup Business Consultancy Platform"
-                    class="w-full h-full object-cover"
-                  />
-                  <div class="project-overlay absolute inset-0 flex items-end">
-                    <div class="p-4">
-                      <div class="grid grid-cols-3 gap-3 mb-2">
-                        <span
-                          class="bg-orange-500 text-white text-xs px-2 py-1 rounded"
-                          >React</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >Next.Js</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >NextAuth</span
-                        >
-                        <span
-                        class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                        >MySQL</span
-                      >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold mb-2 text-orange-500">
-                    Startup Business Consultancy Platform
-                  </h3>
-                  <p class="text-gray-300 mb-4">
-                    enture Spark is a group project from our 2nd year final semester, built using Next.js, React.js, and NextAuth for a modern, secure web application.
-                  </p>
-                  <div class="flex space-x-4">
-                    <a
-                      href="#"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fas fa-eye mr-2"></i> Live Demo
-                    </a>
-                    <a
-                      href="#"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fab fa-github mr-2"></i> GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10"
-              >
-                <div class="relative h-48 overflow-hidden">
-                  <img
-                    src="/Images/Fixed.png"
-                    alt="Startup Business Consultancy Platform"
-                    class="w-full h-full object-cover"
-                  />
-                  <div class="project-overlay absolute inset-0 flex items-end">
-                    <div class="p-4">
-                      <div class="grid grid-cols-3 gap-3 mb-2">
-                        <span
-                          class="bg-orange-500 text-white text-xs px-2 py-1 rounded"
-                          >C#</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >.NET</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >MSSQL</span
-                        >
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold mb-2 text-orange-500">
-                    Fixed Assert Management
-                  </h3>
-                  <p class="text-gray-300 mb-4">
-                    Fixed Asset Management system for Choice Park, built with C#, MSSQL, and .NET Framework, handling asset transactions, adjustments, disposals, stock tracking, and multi-branch support. </p>
-                  <div class="flex space-x-4">
-                    <a
-                      href="#"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fas fa-eye mr-2"></i> Live Demo
-                    </a>
-                    <a
-                      href="#"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fab fa-github mr-2"></i> GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10"
-              >
-                <div class="relative h-48 overflow-hidden">
-                  <img
-                    src="/Images/data.png"
-                    alt="Startup Business Consultancy Platform"
-                    class="w-full h-full object-cover"
-                  />
-                  <div class="project-overlay absolute inset-0 flex items-end">
-                    <div class="p-4">
-                      <div class="grid grid-cols-3 gap-3 mb-2">
-                        <span
-                          class="bg-orange-500 text-white text-xs px-2 py-1 rounded"
-                          >C#</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >.NET</span
-                        >
-                        <span
-                          class="bg-gray-700 text-white text-xs px-2 py-1 rounded"
-                          >MSSQL</span
-                        >
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold mb-2 text-orange-500">
-                    Data Entry Management
-                  </h3>
-                  <p class="text-gray-300 mb-4">
-                    A Data Entry Management system built with C#, MSSQL, and .NET Framework to maintain and manage sales data efficiently and securely. <div class="flex space-x-4">
-                    <a
-                      href="#"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fas fa-eye mr-2"></i> Live Demo
-                    </a>
-                    <a
-                      href="#"
-                      class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center"
-                    >
-                      <i class="fab fa-github mr-2"></i> GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="text-center mt-16">
-              <a
-                href="https://github.com/ABD-HAKEEM"
-                class="inline-block bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
-              >
-                View All Projects <i class="fas fa-arrow-right ml-2"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section 5: Contact -->
-      <section
-        id="section5"
-        class="scroll-section scroll-snap-item bg-gray-900 relative min-h-screen"
-      >
-        <!-- Background elements -->
-        <div class="blob w-96 h-96 top-0 left-0 opacity-10"></div>
-        <div class="blob w-80 h-80 bottom-20 right-20 opacity-15"></div>
-
-        <div
-          class="container mx-auto px-6 lg:pl-96 py-20 min-h-screen flex items-center"
-        >
-          <div class="w-full">
-            <div class="flex items-center mb-12">
-              <div class="w-16 h-1 bg-orange-500 mr-4"></div>
-              <h2 class="text-4xl font-bold">Get In Touch</h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div>
-                <p class="text-xl text-gray-300 mb-8 max-w-lg">
-                  I'm always open to new opportunities, collaborations, and
-                  interesting projects. Feel free to reach out if you have any
-                  questions or just want to say hello!
+                <h4 class="text-xl font-bold mb-3">Clean Architecture</h4>
+                <p class="text-gray-300">
+                  I prioritize modular, maintainable code with clear
+                  separation of concerns and testable components.
                 </p>
+              </div>
 
-                <div class="space-y-6">
-                  <div class="flex items-start">
-                    <div class="bg-gray-800 p-4 rounded-full mr-4">
-                      <i class="fas fa-envelope text-orange-500"></i>
+              <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+                <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-3">User-Centered Design</h4>
+                <p class="text-gray-300">
+                  I develop with the end user in mind, creating intuitive
+                  interfaces and seamless experiences.
+                </p>
+              </div>
+
+              <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+                <div class="w-16 h-16 mb-4 text-4xl text-orange-500 flex items-center justify-center">
+                  <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-3">Agile Methodology</h4>
+                <p class="text-gray-300">
+                  I embrace iterative development with continuous integration
+                  and deployment to deliver value quickly.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Projects -->
+    <section id="section4" class="scroll-section scroll-snap-item bg-gray-900 relative min-h-screen">
+
+      <div class="blob w-80 h-80 bottom-0 right-0 opacity-10"></div>
+      <div class="blob w-64 h-64 top-20 left-20 opacity-15"></div>
+
+      <div class="container mx-auto px-6 lg:pl-96 py-20 min-h-screen flex items-center">
+        <div class="w-full">
+          <div class="flex items-center mb-12">
+            <div class="w-16 h-1 bg-orange-500 mr-4"></div>
+            <h2 class="text-4xl font-bold">Featured Projects</h2>
+          </div>
+
+          <p class="text-xl text-gray-300 mb-12 max-w-3xl">
+            Here are some of my recent projects that showcase my technical
+            skills and problem-solving abilities.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10">
+              <div class="relative h-48 overflow-hidden">
+                <img src="/TheTechBlog/Images/TheFusionfork.png" alt="Restaurant E-commerce Website"
+                  class="w-full h-full object-cover" />
+                <div class="project-overlay absolute inset-0 flex items-end">
+                  <div class="p-4">
+                    <div class="grid grid-cols-3 gap-3 mb-2">
+                      <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">PHP</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">Laravel</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">Tailwind</span>
+
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">HTML</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">Alpine.js</span>
+
                     </div>
-                    <div>
-                      <h3 class="font-bold mb-1">Email</h3>
-                      <p class="text-gray-300">hakeemfareed@gosmart.lk</p>
-                    </div>
+
                   </div>
 
-                  <div class="flex items-start">
-                    <div class="bg-gray-800 p-4 rounded-full mr-4">
-                      <i class="fas fa-phone text-orange-500"></i>
-                    </div>
-                    <div>
-                      <h3 class="font-bold mb-1">Phone</h3>
-                      <p class="text-gray-300">+94 76 112 2226</p>
-                    </div>
-                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-orange-500">
+                  Restaurant E-commerce Website
+                </h3>
+                <p class="text-gray-300 mb-4">
+                  This project creates an online platform for food orders, table reservations, interactive dining, and
+                  customer support, enhancing the dining experience and aligning with strategic goals.
+                </p>
+                <div class="flex space-x-4">
+                  <a href="#" class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fas fa-eye mr-2"></i> Live Demo
+                  </a>
+                  <a href="https://github.com/ABD-HAKEEM/TheFusionFork.git"
+                    class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
 
-                  <div class="flex items-start">
-                    <div class="bg-gray-800 p-4 rounded-full mr-4">
-                      <i class="fas fa-map-marker-alt text-orange-500"></i>
-                    </div>
-                    <div>
-                      <h3 class="font-bold mb-1">Location</h3>
-                      <p class="text-gray-300">Colombo, Sri Lanka</p>
+            <!-- Project 2 -->
+            <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10">
+              <div class="relative h-48 overflow-hidden">
+                <img src="/TheTechBlog/Images/mobil.png" alt="Restaurant E-commerce Mobile App"
+                  class="w-full h-full object-cover" />
+                <div class="project-overlay absolute inset-0 flex items-end">
+                  <div class="p-4">
+                    <div class="flex space-x-3 mb-2">
+                      <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">Flutter</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">Dart</span>
+
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-orange-500">
+                  Restaurant E-commerce Mobile App
+                </h3>
+                <p class="text-gray-300 mb-4">
+                  A mobile front-end for a restaurant e-commerce app, designed for browsing menus, placing orders, and
+                  smooth user interaction.
+                </p>
+                <div class="flex space-x-4">
+                  <a href="#" class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fas fa-eye mr-2"></i> Live Demo
+                  </a>
+                  <a href="https://github.com/ABD-HAKEEM/Mad1_TheFusionFork.git"
+                    class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
 
-                <div class="mt-12">
-                  <h3 class="text-2xl font-bold text-orange-500 mb-6">
-                    Connect With Me
-                  </h3>
-                  <div class="flex space-x-4">
-                    <a
-                      href="https://github.com/ABD-HAKEEM"
-                      class="bg-gray-800 p-4 rounded-full text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300"
-                    >
-                      <i class="fab fa-github"></i>
-                    </a>
-                    <a
-                      href="https://www.linkedin.com/in/abdul-hakeem-0168481b6/"
-                      class="bg-gray-800 p-4 rounded-full text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300"
-                    >
-                      <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a
-                      href="https://x.com/hakeemabdul64?s=21&t=U5HyMqjdbYhGK1RxqxY2xQ"
-                      class="bg-gray-800 p-4 rounded-full text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300"
-                    >
-                    <i class="fa-brands fa-x-twitter"></i>
-                    </a>
-                    <a
-                      href="#"
-                      class="bg-gray-800 p-4 rounded-full text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300"
-                    >
-                      <i class="fab fa-whatsapp"></i>
-                    </a>
+            <!-- Project 3 -->
+            <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10">
+              <div class="relative h-48 overflow-hidden">
+                <img src="/TheTechBlog/Images/Cab.png" alt="Cab Management System" class="w-full h-full object-cover" />
+                <div class="project-overlay absolute inset-0 flex items-end">
+                  <div class="p-4">
+                    <div class="grid grid-cols-3 gap-3 mb-2">
+                      <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">C#</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">.NET</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">MSSQL</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-orange-500">
+                  Cab Management System
+                </h3>
+                <p class="text-gray-300 mb-4">
+                  A C# OOP-based Cab Management System for managing teacher cab bookings, client-vendor coordination,
+                  and driver assignments, built as a complete end-to-end solution.
+                </p>
+                <div class="flex space-x-4">
+                  <a href="#" class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fas fa-eye mr-2"></i> Live Demo
+                  </a>
+                  <a href="https://github.com/ABD-HAKEEM/Cab-Booking-Application.git"
+                    class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10">
+              <div class="relative h-48 overflow-hidden">
+                <img src="/TheTechBlog/Images/Wildlife.png" alt="Sri  Lanka Wildlife Website For Project"
+                  class="w-full h-full object-cover" />
+                <div class="project-overlay absolute inset-0 flex items-end">
+                  <div class="p-4">
+                    <div class="grid grid-cols-3 gap-3 mb-2">
+                      <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">HTML</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">tailwindcss</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">Alpine.Js</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">CSS</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-orange-500">
+                  Sri Lanka Wildlife Website For Project
+                </h3>
+                <p class="text-gray-300 mb-4">
+                  My first project — a responsive website built with HTML, CSS, Alpine.js, and Tailwind CSS to showcase
+                  the wildlife of Sri Lanka with interactive features.
+                </p>
+                <div class="flex space-x-4">
+                  <a href="https://abd-hakeem.github.io/CB013168-WDOS-ABDULHAKEEM/"
+                    class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fas fa-eye mr-2"></i> Live Demo
+                  </a>
+                  <a href="https://github.com/ABD-HAKEEM/CB013168-WDOS-ABDULHAKEEM.git"
+                    class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10">
+              <div class="relative h-48 overflow-hidden">
+                <img src="/TheTechBlog/Images/Uniq.png" alt="Ceylon Foods Trading (Pvt) Ltd  Website"
+                  class="w-full h-full object-cover" />
+                <div class="project-overlay absolute inset-0 flex items-end">
+                  <div class="p-4">
+                    <div class="grid grid-cols-3 gap-3 mb-2">
+                      <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">PHP</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">HTML</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">tailwindcss</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">alpine.js</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-orange-500">
+                  Ceylon Foods Trading (Pvt) Ltd Website
+                </h3>
+                <p class="text-gray-300 mb-4">
+                  A dynamic website for unique food ingredients with admin-controlled customizable content, built using
+                  HTML, PHP, and Tailwind CSS.
+                </p>
+                <div class="flex space-x-4">
+                  <a href="https://uniqueingredients.lk"
+                    class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fas fa-eye mr-2"></i> Live Demo
+                  </a>
+                  <a href="#" class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10">
+              <div class="relative h-48 overflow-hidden">
+                <img src="/TheTechBlog/Images/Venture.png" alt="Startup Business Consultancy Platform"
+                  class="w-full h-full object-cover" />
+                <div class="project-overlay absolute inset-0 flex items-end">
+                  <div class="p-4">
+                    <div class="grid grid-cols-3 gap-3 mb-2">
+                      <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">React</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">Next.Js</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">NextAuth</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">MySQL</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-orange-500">
+                  Startup Business Consultancy Platform
+                </h3>
+                <p class="text-gray-300 mb-4">
+                  enture Spark is a group project from our 2nd year final semester, built using Next.js, React.js, and
+                  NextAuth for a modern, secure web application.
+                </p>
+                <div class="flex space-x-4">
+                  <a href="#" class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fas fa-eye mr-2"></i> Live Demo
+                  </a>
+                  <a href="#" class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10">
+              <div class="relative h-48 overflow-hidden">
+                <img src="/TheTechBlog/Images/Fixed.png" alt="Startup Business Consultancy Platform"
+                  class="w-full h-full object-cover" />
+                <div class="project-overlay absolute inset-0 flex items-end">
+                  <div class="p-4">
+                    <div class="grid grid-cols-3 gap-3 mb-2">
+                      <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">C#</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">.NET</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">MSSQL</span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-orange-500">
+                  Fixed Assert Management
+                </h3>
+                <p class="text-gray-300 mb-4">
+                  Fixed Asset Management system for Choice Park, built with C#, MSSQL, and .NET Framework, handling
+                  asset transactions, adjustments, disposals, stock tracking, and multi-branch support. </p>
+                <div class="flex space-x-4">
+                  <a href="#" class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fas fa-eye mr-2"></i> Live Demo
+                  </a>
+                  <a href="#" class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 h-9/10">
+              <div class="relative h-48 overflow-hidden">
+                <img src="/TheTechBlog/Images/data.png" alt="Startup Business Consultancy Platform"
+                  class="w-full h-full object-cover" />
+                <div class="project-overlay absolute inset-0 flex items-end">
+                  <div class="p-4">
+                    <div class="grid grid-cols-3 gap-3 mb-2">
+                      <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">C#</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">.NET</span>
+                      <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">MSSQL</span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-orange-500">
+                  Data Entry Management
+                </h3>
+                <p class="text-gray-300 mb-4">
+                  A Data Entry Management system built with C#, MSSQL, and .NET Framework to maintain and manage sales
+                  data efficiently and securely.
+                <div class="flex space-x-4">
+                  <a href="#" class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fas fa-eye mr-2"></i> Live Demo
+                  </a>
+                  <a href="#" class="text-sm text-orange-500 hover:text-orange-300 transition-colors flex items-center">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-16">
+            <a href="https://github.com/ABD-HAKEEM"
+              class="inline-block bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+              View All Projects <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Contact -->
+    <section id="section5" class="scroll-section scroll-snap-item bg-gray-900 relative min-h-screen">
+      <!-- Background elements -->
+      <div class="blob w-96 h-96 top-0 left-0 opacity-10"></div>
+      <div class="blob w-80 h-80 bottom-20 right-20 opacity-15"></div>
+
+      <div class="container mx-auto px-6 lg:pl-96 py-20 min-h-screen flex items-center">
+        <div class="w-full">
+          <div class="flex items-center mb-12">
+            <div class="w-16 h-1 bg-orange-500 mr-4"></div>
+            <h2 class="text-4xl font-bold">Get In Touch</h2>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+              <p class="text-xl text-gray-300 mb-8 max-w-lg">
+                I'm always open to new opportunities, collaborations, and
+                interesting projects. Feel free to reach out if you have any
+                questions or just want to say hello!
+              </p>
+
+              <div class="space-y-6">
+                <div class="flex items-start">
+                  <div class="bg-gray-800 p-4 rounded-full mr-4">
+                    <i class="fas fa-envelope text-orange-500"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold mb-1">Email</h3>
+                    <p class="text-gray-300">hakeemfareed@gosmart.lk</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-gray-800 p-4 rounded-full mr-4">
+                    <i class="fas fa-phone text-orange-500"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold mb-1">Phone</h3>
+                    <p class="text-gray-300">+94 76 112 2226</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-gray-800 p-4 rounded-full mr-4">
+                    <i class="fas fa-map-marker-alt text-orange-500"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold mb-1">Location</h3>
+                    <p class="text-gray-300">Colombo, Sri Lanka</p>
                   </div>
                 </div>
               </div>
 
-              <div>
-                <div class="relative">
-                  <div
-                    class="absolute -inset-2 bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl blur opacity-20"
-                  ></div>
-                  <div
-                    class="relative bg-gray-800 rounded-xl p-8 shadow-xl border border-gray-700"
-                  >
-                    <h3 class="text-2xl font-bold mb-6 text-orange-500">
-                      Send Me a Message
-                    </h3>
+              <div class="mt-20">
+                <h3 class="text-2xl font-bold text-orange-500 mb-6">
+                  Connect With Me
+                </h3>
+                <div class="flex space-x-4">
+                  <a href="https://github.com/ABD-HAKEEM"
+                    class="bg-gray-800 p-4 rounded-full text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300">
+                    <i class="fab fa-github"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/abdul-hakeem-0168481b6/"
+                    class="bg-gray-800 p-4 rounded-full text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                  <a href="https://x.com/hakeemabdul64?s=21&t=U5HyMqjdbYhGK1RxqxY2xQ"
+                    class="bg-gray-800 p-4 rounded-full text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300">
+                    <i class="fa-brands fa-x-twitter"></i>
+                  </a>
+                  <a href="#"
+                    class="bg-gray-800 p-4 rounded-full text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
 
-                    <form id="contactForm">
-                      <div class="mb-6">
-                        <label for="name" class="block mb-2 font-bold"
-                          >Your Name</label
-                        >
-                        <input
-                          type="text"
-                          id="name"
-                          class="form-input w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none text-white"
-                          placeholder="John Doe"
-                          required
-                        />
-                      </div>
+            <div>
+              <div class="relative">
+                <div class="absolute -inset-2 bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl blur opacity-20 ">
+                </div>
+                <div class="relative bg-gray-800 rounded-xl p-8 shadow-xl border border-gray-700">
+                  <h3 class="text-2xl font-bold mb-6 text-orange-500">
+                    Send Me a Message
+                  </h3>
 
-                      <div class="mb-6">
-                        <label for="email" class="block mb-2 font-bold"
-                          >Email Address</label
-                        >
-                        <input
-                          type="email"
-                          id="email"
-                          class="form-input w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none text-white"
-                          placeholder="john@example.com"
-                          required
-                        />
-                      </div>
+                  <form id="contactForm">
+                    <div class="mb-6">
+                      <label for="name" class="block mb-2 font-bold">Your Name</label>
+                      <input type="text" id="name"
+                        class="form-input w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none text-white"
+                        placeholder="John Doe" required />
+                    </div>
 
-                      <div class="mb-6">
-                        <label for="subject" class="block mb-2 font-bold"
-                          >Subject</label
-                        >
-                        <input
-                          type="text"
-                          id="subject"
-                          class="form-input w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none text-white"
-                          placeholder="Project Inquiry"
-                        />
-                      </div>
+                    <div class="mb-6">
+                      <label for="email" class="block mb-2 font-bold">Email Address</label>
+                      <input type="email" id="email"
+                        class="form-input w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none text-white"
+                        placeholder="john@example.com" required />
+                    </div>
 
-                      <div class="mb-6">
-                        <label for="message" class="block mb-2 font-bold"
-                          >Your Message</label
-                        >
-                        <textarea
-                          id="message"
-                          rows="5"
-                          class="form-input w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none text-white resize-none"
-                          placeholder="Hello Hakeem, I'd like to discuss a project..."
-                          required
-                        ></textarea>
-                      </div>
+                    <div class="mb-6">
+                      <label for="subject" class="block mb-2 font-bold">Subject</label>
+                      <input type="text" id="subject"
+                        class="form-input w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none text-white"
+                        placeholder="Project Inquiry" />
+                    </div>
 
-                      <button
-                        type="submit"
-                        class="w-full bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                      >
-                        Send Message <i class="fas fa-paper-plane ml-2"></i>
-                      </button>
-                    </form>
-                  </div>
+                    <div class="mb-6">
+                      <label for="message" class="block mb-2 font-bold">Your Message</label>
+                      <textarea id="message" rows="5"
+                        class="form-input w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none text-white resize-none"
+                        placeholder="Hello Hakeem, I'd like to discuss a project..." required></textarea>
+                    </div>
+
+                    <button type="submit"
+                      class="w-full bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                      Send Message <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+  </div>
 
-    <!-- JavaScript -->
-    <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                      // Mobile navigation toggle
-                      const mobileNavToggle = document.getElementById('mobileNavToggle');
-                      const mobileSidebar = document.getElementById('mobileSidebar');
-                      const closeSidebar = document.getElementById('closeSidebar');
-                      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-                      mobileNavToggle.addEventListener('click', function() {
-                          mobileSidebar.classList.remove('-translate-x-full');
-                      });
+          <!-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Mobile navigation toggle
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const mobileSidebar = document.getElementById('mobileSidebar');
+    const closeSidebar = document.getElementById('closeSidebar');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-                      closeSidebar.addEventListener('click', function() {
-                          mobileSidebar.classList.add('-translate-x-full');
-                      });
+    mobileNavToggle.addEventListener('click', function() {
+        mobileSidebar.classList.remove('-translate-x-full');
+    });
 
-                      mobileNavLinks.forEach(link => {
-                          link.addEventListener('click', function() {
-                              mobileSidebar.classList.add('-translate-x-full');
-                          });
-                      });
+    closeSidebar.addEventListener('click', function() {
+        mobileSidebar.classList.add('-translate-x-full');
+    });
 
-                      // Scroll handling & active section
-                      const sections = document.querySelectorAll('.scroll-section');
-                      const navLinks = document.querySelectorAll('.nav-link');
-                      const progressBar = document.getElementById('progressBar');
-                      const scrollContainer = document.getElementById('scroll-container');
-
-                      // Update active nav link based on scroll position
-                      function updateActiveNav() {
-                          let currentSectionId;
-
-                          if (window.innerWidth >= 1024) {
-                              // For horizontal scroll (desktop)
-                              const scrollLeft = scrollContainer.scrollLeft;
-                              const containerWidth = scrollContainer.offsetWidth;
-
-                              sections.forEach(section => {
-                                  const sectionLeft = section.offsetLeft;
-                                  if (scrollLeft >= sectionLeft - containerWidth / 2) {
-                                      currentSectionId = section.id;
-                                  }
-                              });
-
-                              // Update progress bar
-                              const maxScroll = scrollContainer.scrollWidth - containerWidth;
-                              const scrollPercentage = (scrollLeft / maxScroll) * 100;
-                              progressBar.style.width = `${scrollPercentage}%`;
-                          } else {
-                              // For vertical scroll (mobile)
-                              const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-                              sections.forEach(section => {
-                                  const sectionTop = section.offsetTop;
-                                  const sectionHeight = section.offsetHeight;
-                                  if (scrollTop >= sectionTop - sectionHeight / 2 && scrollTop < sectionTop + sectionHeight) {
-                                      currentSectionId = section.id;
-                                  }
-                              });
-                          } else {
-        // For vertical scroll (mobile)
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-
-          if (scrollTop >= sectionTop - 200 && scrollTop < sectionTop + sectionHeight - 200) {
-            currentSectionId = section.id;
-          }
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileSidebar.classList.add('-translate-x-full');
         });
+    });
 
-        // Update progress bar for mobile
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercentage = (scrollTop / docHeight) * 100;
-        progressBar.style.width = `${scrollPercentage}%`;
-      }
+    // Scroll handling & active section
+    const sections = document.querySelectorAll('.scroll-section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const progressBar = document.getElementById('progressBar');
+    const scrollContainer = document.getElementById('scroll-container');
 
-      // Update active nav links
-      navLinks.forEach(link => {
-        if (link.getAttribute('href').substring(1) === currentSectionId) {
-          link.classList.add('active');
+    // Update active nav link based on scroll position
+    function updateActiveNav() {
+        let currentSectionId;
+
+        if (window.innerWidth >= 1024) {
+            // For horizontal scroll (desktop)
+            const scrollLeft = scrollContainer.scrollLeft;
+            const containerWidth = scrollContainer.offsetWidth;
+
+            sections.forEach(section => {
+                const sectionLeft = section.offsetLeft;
+                if (scrollLeft >= sectionLeft - containerWidth / 2) {
+                    currentSectionId = section.id;
+                }
+            });
+
+            // Update progress bar
+            const maxScroll = scrollContainer.scrollWidth - containerWidth;
+            const scrollPercentage = (scrollLeft / maxScroll) * 100;
+            progressBar.style.width = `${scrollPercentage}%`;
         } else {
-          link.classList.remove('active');
-        }
-      });
-      }
+            // For vertical scroll (mobile)
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-      // Implement smooth scrolling for desktop horizontal scroll
-      function smoothScrollTo(elementId) {
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+
+                if (scrollTop >= sectionTop - 200 && scrollTop < sectionTop + sectionHeight - 200) {
+                    currentSectionId = section.id;
+                }
+            });
+
+            // Update progress bar for mobile
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercentage = (scrollTop / docHeight) * 100;
+            progressBar.style.width = `${scrollPercentage}%`;
+        }
+
+        // Update active nav links
+        navLinks.forEach(link => {
+            if (link.getAttribute('href').substring(1) === currentSectionId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+
+    // Implement smooth scrolling for desktop horizontal scroll
+    function smoothScrollTo(elementId) {
         const element = document.getElementById(elementId);
         if (!element) return;
 
         if (window.innerWidth >= 1024) {
-          scrollContainer.scrollTo({
-            left: element.offsetLeft,
-            behavior: 'smooth'
-          });
+            scrollContainer.scrollTo({
+                left: element.offsetLeft,
+                behavior: 'smooth'
+            });
         } else {
-          window.scrollTo({
-            top: element.offsetTop,
-            behavior: 'smooth'
-          });
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
         }
-      }
+    }
 
-      // Add scroll event listeners
-      if (window.innerWidth >= 1024) {
+    // Add scroll event listeners
+    if (window.innerWidth >= 1024) {
         scrollContainer.addEventListener('scroll', updateActiveNav);
-      } else {
+    } else {
         window.addEventListener('scroll', updateActiveNav);
-      }
+    }
 
-      // Add click handlers to nav links
-      navLinks.forEach(link => {
+    // Add click handlers to nav links
+    navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href').substring(1);
-          smoothScrollTo(targetId);
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            smoothScrollTo(targetId);
         });
-      });
+    });
 
-      // Initialize active nav
-      updateActiveNav();
+    // Initialize active nav
+    updateActiveNav();
 
-      // Handle resize events
-      window.addEventListener('resize', function() {
+    // Handle resize events
+    window.addEventListener('resize', function() {
         // Re-initialize event listeners based on window size
         if (window.innerWidth >= 1024) {
-          window.removeEventListener('scroll', updateActiveNav);
-          scrollContainer.addEventListener('scroll', updateActiveNav);
+            window.removeEventListener('scroll', updateActiveNav);
+            scrollContainer.addEventListener('scroll', updateActiveNav);
         } else {
-          scrollContainer.removeEventListener('scroll', updateActiveNav);
-          window.addEventListener('scroll', updateActiveNav);
+            scrollContainer.removeEventListener('scroll', updateActiveNav);
+            window.addEventListener('scroll', updateActiveNav);
         }
 
         // Re-calculate active section
         updateActiveNav();
-      });
+    });
 
-      // Optional: Add animations when elements come into view
-      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    // Optional: Add animations when elements come into view
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
 
-      function checkAnimations() {
+    function checkAnimations() {
         animatedElements.forEach(element => {
-          const elementPosition = element.getBoundingClientRect();
-          const isVisible =
-            (window.innerWidth >= 1024)
-              ? (elementPosition.left <= window.innerWidth && elementPosition.right >= 0)
-              : (elementPosition.top <= window.innerHeight && elementPosition.bottom >= 0);
+            const elementPosition = element.getBoundingClientRect();
+            const isVisible =
+                (window.innerWidth >= 1024)
+                    ? (elementPosition.left <= window.innerWidth && elementPosition.right >= 0)
+                    : (elementPosition.top <= window.innerHeight && elementPosition.bottom >= 0);
 
-          if (isVisible) {
-            element.classList.add('animate');
-          }
+            if (isVisible) {
+                element.classList.add('animate');
+            }
         });
-      }
+    }
 
-      // Check animations on scroll
-      if (window.innerWidth >= 1024) {
+    // Check animations on scroll
+    if (window.innerWidth >= 1024) {
         scrollContainer.addEventListener('scroll', checkAnimations);
-      } else {
+    } else {
         window.addEventListener('scroll', checkAnimations);
-      }
+    }
 
-      // Initial animation check
-      checkAnimations();
-      });
-    </script>
-  </body>
+    // Initial animation check
+    checkAnimations();
+});
+  </script> -->
+
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              // Mobile navigation toggle
+              const mobileNavToggle = document.getElementById('mobileNavToggle');
+              const mobileSidebar = document.getElementById('mobileSidebar');
+              const closeSidebar = document.getElementById('closeSidebar');
+              const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+              mobileNavToggle.addEventListener('click', function () {
+                mobileSidebar.classList.remove('-translate-x-full');
+              });
+
+              closeSidebar.addEventListener('click', function () {
+                mobileSidebar.classList.add('-translate-x-full');
+              });
+
+              mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                  mobileSidebar.classList.add('-translate-x-full');
+                });
+              });
+
+              // Scroll handling & active section
+              const sections = document.querySelectorAll('.scroll-section');
+              const navLinks = document.querySelectorAll('.nav-link');
+              const progressBar = document.getElementById('progressBar');
+              const scrollContainer = document.getElementById('scroll-container');
+
+              // Update active nav link based on scroll position
+              function updateActiveNav() {
+                let currentSectionId;
+
+                // For horizontal scroll (both desktop and mobile now)
+                const scrollLeft = scrollContainer.scrollLeft;
+                const containerWidth = scrollContainer.offsetWidth;
+
+                sections.forEach(section => {
+                  const sectionLeft = section.offsetLeft;
+                  if (scrollLeft >= sectionLeft - containerWidth / 2) {
+                    currentSectionId = section.id;
+                  }
+                });
+
+                // Update progress bar
+                const maxScroll = scrollContainer.scrollWidth - containerWidth;
+                const scrollPercentage = (scrollLeft / maxScroll) * 100;
+                progressBar.style.width = `${scrollPercentage}%`;
+
+                // Update active nav links
+                navLinks.forEach(link => {
+                  if (link.getAttribute('href').substring(1) === currentSectionId) {
+                    link.classList.add('active');
+                  } else {
+                    link.classList.remove('active');
+                  }
+                });
+              }
+
+              // Implement smooth scrolling for horizontal scroll
+              function smoothScrollTo(elementId) {
+                const element = document.getElementById(elementId);
+                if (!element) return;
+
+                scrollContainer.scrollTo({
+                  left: element.offsetLeft,
+                  behavior: 'smooth'
+                });
+              }
+
+              // Add scroll event listeners - now only horizontal for both desktop and mobile
+              scrollContainer.addEventListener('scroll', updateActiveNav);
+
+              // Add click handlers to nav links
+              navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  const targetId = this.getAttribute('href').substring(1);
+                  smoothScrollTo(targetId);
+                });
+              });
+
+              // Initialize active nav
+              updateActiveNav();
+
+              // Handle resize events
+              window.addEventListener('resize', function () {
+                // Re-calculate active section
+                updateActiveNav();
+              });
+
+              // Optional: Add animations when elements come into view
+              const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+              function checkAnimations() {
+                animatedElements.forEach(element => {
+                  const elementPosition = element.getBoundingClientRect();
+                  // Now we only check for horizontal visibility since both desktop and mobile use horizontal scrolling
+                  const isVisible = elementPosition.left <= window.innerWidth && elementPosition.right >= 0;
+
+                  if (isVisible) {
+                    element.classList.add('animate');
+                  }
+                });
+              }
+
+              // Check animations on scroll - now only horizontal for both desktop and mobile
+              scrollContainer.addEventListener('scroll', checkAnimations);
+
+              // Initial animation check
+              checkAnimations();
+
+              // Optional: Handle touch events for better mobile experience
+              let touchStartX = 0;
+              let touchEndX = 0;
+
+              scrollContainer.addEventListener('touchstart', function (e) {
+                touchStartX = e.changedTouches[0].screenX;
+              }, false);
+
+              scrollContainer.addEventListener('touchend', function (e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+              }, false);
+
+              function handleSwipe() {
+                const currentSectionIndex = getCurrentSectionIndex();
+
+                if (touchEndX < touchStartX - 50) {
+                  // Swipe left
+                  if (currentSectionIndex < sections.length - 1) {
+                    smoothScrollTo(sections[currentSectionIndex + 1].id);
+                  }
+                }
+
+                if (touchEndX > touchStartX + 50) {
+                  // Swipe right
+                  if (currentSectionIndex > 0) {
+                    smoothScrollTo(sections[currentSectionIndex - 1].id);
+                  }
+                }
+              }
+
+              function getCurrentSectionIndex() {
+                const scrollLeft = scrollContainer.scrollLeft;
+                const containerWidth = scrollContainer.offsetWidth;
+
+                for (let i = 0; i < sections.length; i++) {
+                  const sectionLeft = sections[i].offsetLeft;
+                  if (scrollLeft < sectionLeft + containerWidth / 2) {
+                    return i;
+                  }
+                }
+
+                return sections.length - 1;
+              }
+            });
+          </script>
+</body>
+
 </html>
