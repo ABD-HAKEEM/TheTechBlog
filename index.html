@@ -14,7 +14,8 @@
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-  <link rel="stylesheet" href="/TheTechBlog/CSS/style.css" />
+  <!-- <link rel="stylesheet" href="/TheTechBlog/CSS/style.css" /> -->
+  <link rel="stylesheet" href="/CSS/style.css" />
 </head>
 
 <body class="bg-gray-900 text-gray-100 overflow-hidden">
@@ -126,7 +127,6 @@
               </li>
               <li>
                 <a href="#section2" class="block py-2 text-lg underline-animation nav-link">About</a>
-              </li>
               <li>
                 <a href="#section3" class="block py-2 text-lg underline-animation nav-link">Tech Stack</a>
               </li>
@@ -170,7 +170,7 @@
 
       <!-- Hero content -->
 
-<div class="container mx-auto px-6 mt-96 lg:mt-0 md:pl-64 lg:pl-80 xl:pl-96 pl-6 flex flex-col lg:flex-row items-center justify-between min-h-screen">
+<div class="container mx-auto px-6 mt-10 lg:mt-88 lg:mt-0 md:pl-64 lg:pl-80 xl:pl-96 pl-6 flex flex-col lg:flex-row items-center justify-between min-h-screen">
     <div class="grid grid-cols-2">
 
         </div>
@@ -209,53 +209,56 @@
         </div>
 
         <!-- hero 2 -->
-        <div class="sm:w-full lg:w-1/2 mt-12 hidden lg:blo lg:ml-0 lg:mt-0  lg:flex justify-end pl-11">
-          <div class="relative">
-            <div class="absolute -inset-0.5 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg blur-xl opacity-50">
-            </div>
-            <div class="relative :w-full bg-gray-800 p-8 rounded-lg border border-gray-700 shadow-2xl">
-              <pre class="text-sm text-gray-300 font-mono ">
-  <span class="text-pink-500">class</span> <span class="text-orange-400">SoftwareEngineer</span> {
-    <span class="text-pink-500">constructor</span>() {
-        <span class="text-pink-500">this</span>.name = <span class="text-green-400">"Hakeem Fareedh"</span>;
-        <span class="text-pink-500">this</span>.role = <span class="text-green-400">"Full Stack Developer"</span>;
-        <span class="text-pink-500">this</span>.location = <span class="text-green-400">"Sri Lanka"</span>;
-        <span class="text-pink-500">this</span>.languages = [
-            <span class="text-green-400">"Laravel"</span>, 
-            <span class="text-green-400">"Next.Js"</span>, 
-            <span class="text-green-400">"C#"</span>,
-            <span class="text-green-400">"PHP"</span>
-            <span class="text-green-400">"tailwindcss"</span>
-            <span class="text-green-400">"alpinejs"</span>
-        ];
-        <span class="text-pink-500">this</span>.skills = [
-            <span class="text-green-400">"Front-end"</span>,
-            <span class="text-green-400">"Back-end"</span>,
-            <span class="text-green-400">"Database"</span>,
-            <span class="text-green-400">"DevOps"</span>
-        ];
-    }
-  
-    <span class="text-blue-400">buildAmazingStuff</span>() {
-        <span class="text-purple-500">return</span> <span class="text-green-400">"Creating innovative solutions!"</span>;
-    }
-  }
-                            </pre>
-              <div class="flex justify-between mt-4 text-sm text-gray-400">
+        <div class="w-[385px] md:w-full mt-12 px-4 lg:px-0 lg:mt-0 lg:flex lg:justify-end">
+          <div class="relative  lg:max-w-[90%] xl:max-w-[80%]">
+          
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg blur-xl opacity-50"></div>
+        
+            <!-- Code Block -->
+            <div class="relative w-full bg-gray-800 p-6 sm:p-8 rounded-lg border border-gray-700 shadow-2xl overflow-x-auto">
+              <pre class="text-sm text-gray-300 font-mono whitespace-pre-wrap break-words">
+        <span class="text-pink-500">class</span> <span class="text-orange-400">SoftwareEngineer</span> {
+          <span class="text-pink-500 ">constructor</span>() {
+            <span class="text-pink-500">this</span>.name = <span class="text-green-400">"Hakeem Fareedh"</span>;
+            <span class="text-pink-500">this</span>.role = <span class="text-green-400">"Full Stack Developer"</span>;
+            <span class="text-pink-500">this</span>.location = <span class="text-green-400">"Sri Lanka"</span>;
+            <span class="text-pink-500">this</span>.languages = [
+              <span class="text-green-400">"Laravel"</span>, 
+              <span class="text-green-400">"Next.Js"</span>, 
+              <span class="text-green-400">"C#"</span>,
+              <span class="text-green-400">"PHP"</span>,
+              <span class="text-green-400">"tailwindcss"</span>,
+              <span class="text-green-400">"alpinejs"</span>
+            ];
+            <span class="text-pink-500">this</span>.skills = [
+              <span class="text-green-400">"Front-end"</span>,
+              <span class="text-green-400">"Back-end"</span>,
+              <span class="text-green-400">"Database"</span>,
+              <span class="text-green-400">"DevOps"</span>
+            ];
+          }
+        
+          <span class="text-blue-400">buildAmazingStuff</span>() {
+            <span class="text-purple-500">return</span> <span class="text-green-400">"Creating innovative solutions!"</span>;
+          }
+        }
+              </pre>
+        
+              <div class="flex justify-between mt-4 text-sm text-gray-400 flex-wrap gap-y-2">
                 <span>experience.js</span>
                 <span>2 years of coding experience</span>
               </div>
             </div>
           </div>
         </div>
-
+        
       </div>
 
 
     </section>
 
     <!-- Section 2: About Me -->
-    <section id="section2" class="scroll-section scroll-snap-item bg-gray-900 relative min-h-screen">
+    <section id="section2" class="scroll-section scroll-snap-item bg-gray-900 relative min-h-screen ">
       <!-- Background elements -->
       <div class="blob w-96 h-96 bottom-0 left-1/4 opacity-10"></div>
       <div class="blob w-80 h-80 top-20 right-20 opacity-15"></div>
@@ -316,78 +319,104 @@
                   </ul>
                 </div>
               </div>
-            </div>
 
-            <div class="flex flex-col justify-center">
-              <div class="relative">
-                <div class="absolute -inset-2 bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl blur opacity-20">
-                </div>
-                <div class="relative bg-gray-800 rounded-xl p-8 shadow-xl border border-gray-700">
-                  <h3 class="text-2xl font-bold mb-6 text-orange-500">
-                    Core Skills & Competencies
-                  </h3>
+              
 
-                  <div class="space-y-6">
-                    <div>
-                      <div class="flex justify-between items-center mb-2">
-                        <h4 class="font-bold">Front-end Development</h4>
-                        <span class="text-orange-500">90%</span>
-                      </div>
-                      <div class="w-full bg-gray-700 rounded-full h-2">
-                        <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 90%">
+              <div class="flex flex-col justify-center mt-10">
+                <div class="relative">
+                  <div class="absolute -inset-2 bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl blur opacity-20">
+                  </div>
+                  <div class="relative bg-gray-800 rounded-xl p-8 shadow-xl border border-gray-700">
+                    <h3 class="text-2xl font-bold mb-6 text-orange-500">
+                      Core Skills & Competencies
+                    </h3>
+  
+                    <div class="space-y-6">
+                      <div>
+                        <div class="flex justify-between items-center mb-2">
+                          <h4 class="font-bold">Front-end Development</h4>
+                          <span class="text-orange-500">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                          <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 90%">
+                          </div>
                         </div>
                       </div>
-                    </div>
-
-                    <div>
-                      <div class="flex justify-between items-center mb-2">
-                        <h4 class="font-bold">Back-end Development</h4>
-                        <span class="text-orange-500">85%</span>
-                      </div>
-                      <div class="w-full bg-gray-700 rounded-full h-2">
-                        <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 85%">
+  
+                      <div>
+                        <div class="flex justify-between items-center mb-2">
+                          <h4 class="font-bold">Back-end Development</h4>
+                          <span class="text-orange-500">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                          <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 85%">
+                          </div>
                         </div>
                       </div>
-                    </div>
-
-                    <div>
-                      <div class="flex justify-between items-center mb-2">
-                        <h4 class="font-bold">Database Management</h4>
-                        <span class="text-orange-500">80%</span>
-                      </div>
-                      <div class="w-full bg-gray-700 rounded-full h-2">
-                        <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 80%">
+  
+                      <div>
+                        <div class="flex justify-between items-center mb-2">
+                          <h4 class="font-bold">Database Management</h4>
+                          <span class="text-orange-500">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                          <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 80%">
+                          </div>
                         </div>
                       </div>
-                    </div>
-
-                    <div>
-                      <div class="flex justify-between items-center mb-2">
-                        <h4 class="font-bold">DevOps</h4>
-                        <span class="text-orange-500">75%</span>
-                      </div>
-                      <div class="w-full bg-gray-700 rounded-full h-2">
-                        <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 75%">
+  
+                      <div>
+                        <div class="flex justify-between items-center mb-2">
+                          <h4 class="font-bold">DevOps</h4>
+                          <span class="text-orange-500">75%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                          <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 75%">
+                          </div>
                         </div>
                       </div>
-                    </div>
-
-                    <div>
-                      <div class="flex justify-between items-center mb-2">
-                        <h4 class="font-bold">
-                          Web Hosting & Server Managements
-                        </h4>
-                        <span class="text-orange-500">85%</span>
-                      </div>
-                      <div class="w-full bg-gray-700 rounded-full h-2">
-                        <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 85%">
+  
+                      <div>
+                        <div class="flex justify-between items-center mb-2">
+                          <h4 class="font-bold">
+                            Web Hosting & Server Managements
+                          </h4>
+                          <span class="text-orange-500">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                          <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full" style="width: 85%">
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+
             </div>
+
+
+            <div class="w-full max-w-xl">
+              <div class="relative w-full">
+                  <div class="absolute -inset-0.5 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg blur-xl opacity-50"></div>
+                  
+                  <div class="relative w-full bg-gray-800 p-6 sm:p-8 rounded-lg border border-gray-700 shadow-2xl overflow-x-auto">
+                    <h3 class="text-2xl font-bold">Certifications</h3>
+                      <pre class="text-sm sm:text-base font-mono text-white whitespace-pre-wrap break-words leading-relaxed">
+                          <code id="cert-typed-code" class="min-w-full text-sm text-green-400 font-mono whitespace-pre-wrap break-words"></code>
+                      </pre>
+                      
+                      <div class="flex justify-between  text-xs sm:text-sm text-gray-400 flex-wrap gap-y-2 italic">
+                          <span class="text-pink-500">certifications.js</span>
+                          <span>📱 Professional Certifications</span>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+
+           
           </div>
         </div>
       </div>
@@ -1033,11 +1062,11 @@
                 </div>
               </div>
 
-              <div class="mt-20">
-                <h3 class="text-2xl font-bold text-orange-500 mb-6">
+              <div class="mt-10">
+                <h3 class="text-2xl font-bold text-orange-500 mb-6 p-8">
                   Connect With Me
                 </h3>
-                <div class="flex space-x-4">
+                <div class="flex space-x-4 text-center p-8 mt-[-50px]">
                   <a href="https://github.com/ABD-HAKEEM"
                     class="bg-gray-800 p-4 rounded-full text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300">
                     <i class="fab fa-github"></i>
@@ -1426,6 +1455,60 @@
               }
             });
           </script>
+
+<script>
+  const certCode = `type Certification = {
+  title: string;
+  provider: string;
+  link: string;
+};
+
+const certifications: Certification[] = [
+  {
+    title: 'Meta Front-End Developer',
+    provider: 'Linkedin',
+    link: 'https://linkedin.com/in/hakeemfareedh',
+  },
+  {
+    title: 'Next.Js',
+    provider: 'Linkedin',
+    link: 'https://linkedin.com/in/hakeemfareedh',
+  },
+];
+
+export default function Certificates() {
+  return (
+    <ul>
+      {certifications.map((cert, i) => (
+        <li key={i}>
+          <strong>{cert.title}</strong> — {cert.provider}{' '}
+          <a href={cert.link} target="_blank" rel="noopener noreferrer">🔗</a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+
+`
+;
+  
+    const certTyped = document.getElementById("cert-typed-code");
+    let i = 0;
+  
+    function typeCertCode() {
+      if (i < certCode.length) {
+        certTyped.innerHTML += certCode.charAt(i);
+        i++;
+        setTimeout(typeCertCode, 10);
+      }
+    }
+  
+    window.addEventListener("DOMContentLoaded", typeCertCode);
+  </script>
+    
+
+
 </body>
 
 </html>

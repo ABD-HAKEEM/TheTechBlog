@@ -101,25 +101,25 @@
   }
 
   @media (max-width: 1023px) {
-   .horizontal-scroll-wrapper {
-  display: block;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  height: 100vh;
-  width: 100vw;
-}
-
-.scroll-section {
-  scroll-snap-align: start;
-  width: 100vw;
-  min-height: 100vh; /* <-- key change: allows taller content */
-  box-sizing: border-box;
-  padding: 2rem; /* Optional: give some padding for readability */
-}
-
+    .horizontal-scroll-wrapper {
+      display: block;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      height: 100vh;
+      width: 100vw;
+    }
+  
+    .scroll-section {
+      scroll-snap-align: start;
+      width: 100vw;
+      min-height: 100vh;
+      box-sizing: border-box;
+      padding: 2rem;
+    }
   }
+  
 
   /* Particle animation */
   .particle {
@@ -250,3 +250,16 @@
     border-color: #f97316;
     box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.3);
   }
+  #cert-typed-code::after {
+    content: '|';
+    animation: blink 1s step-start infinite;
+    color: rgb(255, 255, 255);
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.text-glow {
+    text-shadow: 0 0 4px rgba(99, 89, 89, 0.4);
+}
